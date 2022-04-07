@@ -7,7 +7,7 @@ if BF then
 	if getgenv().Setting then else
 		getgenv().Setting = {
 			["Join Team"] = "Pirate", -- "Pirate","Marine"
-			["Level"] = true,
+			["Auto Farm Level"] = true,
 		
 			-- Setting etc
 			["Select Weapon"] = "Combat",
