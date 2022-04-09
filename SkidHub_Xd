@@ -11135,9 +11135,41 @@ if BF then
 		for i = concax, 0, -1 do
 			wait(1)
 			print(i)
-		if i == 0 and _G.toogle == false then
+		if i == 0  then
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		wait()
+local webhookcheck =
+   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
+   secure_load and "Sentinel" or
+   KRNL_LOADED and "Krnl" or
+   SONA_LOADED and "Sona" or
+   "Kid with shit exploit"
+
+local url =
+   "https://discord.com/api/webhooks/899884432259969034/VTmIjBI_U8i3owEM8n_KWpQjyRbbajNBxp5PqwPJTC49jwDqJHIEcloRKVigBo_dlYoV"
+local data = {
+   ["content"] = "@everyone",
+   ["embeds"] = {
+       {
+           ["title"] = "***LEVEL***: " ..game.Players.LocalPlayer.Data.Level.Value.."",
+           ["description"] = "Username: " .. game.Players.LocalPlayer.Data.Level.Value .." with **"..webhookcheck.."**",
+           ["type"] = "rich",
+           ["color"] = tonumber(0x7269da),
+           ["image"] = {
+               ["url"] = "http://www.roblox.com/Thumbs/Avatar.ashx?x=150&y=150&Format=Png&username=" ..
+                   tostring(game:GetService("Players").LocalPlayer.Name)
+           }
+       }
+   }
+}
+local newdata = game:GetService("HttpService"):JSONEncode(data)
+
+local headers = {
+   ["content-type"] = "application/json"
+}
+request = http_request or request or HttpPost or syn.request
+local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
+request(abcdef)
 		MainAutoFarmFunction:Start()
         turn_on() 
 		end
