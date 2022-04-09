@@ -26,7 +26,7 @@ if BF then
 			["Auto Death Step"] = false,
 			["Auto Dragon Talon"] = false,
 			["Auto Electric Clow"] = false,
-			["Auto Buy Legendary Sword"] = false,
+			["Auto Buy Legendary Sword"] = true,
 			["Auto Buy Legendary Sword Hop"] = false,
 			["Auto Buy Enhancement"] = false,
 			["Auto Farm Select Boss Hop"] = false,
@@ -4915,7 +4915,7 @@ if BF then
 		end)
 	end)
 	
-	local Main = library:Window("DuongzHub","Phien Ban Deo Update Nua Cút")
+	local Main = library:Window("DuongzHub","Phien Ban Deo Update Nua C ú t")
 	local AutoFarmTab = Main:Tab("Auto Farm")
 	local MainAutoFarmFunction = AutoFarm(Ms,NameQuest,LevelQuest,NameMon,CFrameMon,CFrameQuest,"AutoFarmLevel")
 	spawn(function()
@@ -4927,54 +4927,22 @@ if BF then
 		end
 	end)
 	AutoFarmTab:Toggle("Auto Farm Level", getgenv().Setting["Auto Farm Level"],function(a)
+		_G.toggle = concax
 		Auto_Farm = a
 		MainAutoFarmFunction:UpdateFarmMode("AutoFarmLevel")
 		if Auto_Farm then
+		_G.toggle = true
 			MainAutoFarmFunction:Start()
 		else
+			_G.toggle = false
 			MainAutoFarmFunction:Stop()
 		end
 	end)
-	FastTween = false
-	AutoFarmTab:Toggle("Very Fast Tween ( Not Recommend For KaiTun )", false,function(a)
-		FastTween = a
-	end)
-	
+	AutoFarmTab:Line()
 	fastattack = true
 	AutoFarmTab:Toggle("Fast Attack", true,function(a)
 		fastattack = a
 	end)
-	if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("Candies","Check") then
-		AutoFarmTab:Line()
-		AutoFarmTab:Toggle("Auto Buy Exp x2", getgenv().Setting["Auto Buy Exp x2"],function(a)
-			_G.AutoBuyExp = a
-		end)
-		AutoFarmTab:Toggle("Auto Buy Exp x2 [ Exp Expire ]", getgenv().Setting["Auto Buy Exp x2[ Exp Expire ]"],function(a)
-			_G.AutoBuyExpExpire = a
-		end)
-		spawn(function()
-			while wait() do
-				if _G.AutoBuyExp then
-					local args = {
-						[1] = "Candies",
-						[2] = "Buy",
-						[3] = 1,
-						[4] = 1
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if _G.AutoBuyExpExpire and game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("Main") and not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Level.Exp.Text,"2x ends in") then
-					local args = {
-						[1] = "Candies",
-						[2] = "Buy",
-						[3] = 1,
-						[4] = 1
-					}
-					game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-			end
-		end)
-	end
 	if OldWorld then
 		AutoFarmTab:Line()
 		-- Auto New World
@@ -5146,9 +5114,11 @@ if BF then
 				if Autothird then
 					local MyLevel = game.Players.localPlayer.Data.Level.Value
 					if MyLevel >= 1500 and NewWorld and Autothird then
-						if Auto_Farm then
 							MainAutoFarmFunction:Stop()
-						end
+							local args = {
+								[1] = "TravelZou" -- OLD WORLD to NEW WORLD
+							}
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 						if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 3 then
 							if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess ~= nil then
 								local args = {
@@ -5425,7 +5395,6 @@ if BF then
 		end)
 	end
 	AutoFarmTab:Line()
-	AutoFarmTab:Line()
 	-- Auto Superhuman
 	AutoFarmTab:Toggle("Auto Superhuman", getgenv().Setting["Auto Superhuman"],function(vu)
 		Superhuman = vu
@@ -5503,45 +5472,29 @@ if BF then
 							[3] = "2"
 						}
 						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Character:FindFirstChild("Dargon Claw").Level.Value >= 300  then
-				    DargonClaw = true
+						DargonClaw = true
 				end
 				if game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Backpack:FindFirstChild("Fishman Karate").Level.Value >= 300  then
 					if SuperhumanFull and DargonClaw == false then
 						if game.Players.LocalPlayer.Data.Level.Value > 1100 then
+								wait(1)
+							 print("Stop FARM de AUTO RAID OC CHO")
+							MainAutoFarmFunction:Stop()
 							RaidsSelected = "Flame"
 							AutoRaids = true
 							RaidsArua = true
 						end
-					else
-						AutoRaids = false
-						RaidsArua = false
-						local args = {
+					elseif Auto_Farm then
+						 MainAutoFarmFunction:Start()
+						 AutoRaids = false
+						 RaidsArua = false
+						 local args = {
 							[1] = "BlackbeardReward",
 							[2] = "DragonClaw",
 							[3] = "2"
-						}
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-					end
-				end
-				if game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate") and game.Players.LocalPlayer.Character:FindFirstChild("Fishman Karate").Level.Value >= 300  then
-					if SuperhumanFull and DargonClaw == false then
-						if game.Players.LocalPlayer.Data.Level.Value > 1100 then
-							RaidsSelected = "Flame"
-							AutoRaids = true
-							RaidsArua = true
-						end
-					else
-						AutoRaids = false
-						RaidsArua = false
-						local args = {
-							[1] = "BlackbeardReward",
-							[2] = "DragonClaw",
-							[3] = "2"
-						}
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-					end
+						 }
+						 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+			 	    end
 				end
 				if game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw") and game.Players.LocalPlayer.Backpack:FindFirstChild("Dragon Claw").Level.Value >= 300  then
 					local args = {
@@ -5562,13 +5515,6 @@ if BF then
 	AutoFarmTab:Toggle("Auto Buy Legendary Sword", getgenv().Setting["Auto Buy Legendary Sword"],function(Value)
 		Legendary = Value    
 	end)
-	AutoFarmTab:Toggle("Auto Buy Legendary Sword Hop", getgenv().Setting["Auto Buy Legendary Sword Hop"],function(Value)
-		LegendaryHop = Value    
-	end)
-	-- Auto Buy Enhancement
-	AutoFarmTab:Toggle("Auto Buy Enhancement", getgenv().Setting["Auto Buy Enhancement"],function(Value)
-		Enhancement = Value    
-	end)
 	spawn(function()
 		while wait() do
 			if Legendary then
@@ -5578,91 +5524,8 @@ if BF then
 				}
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 			end 
-			if LegendaryHop then
-				local args = {
-					[1] = "LegendarySwordDealer",
-					[2] = "2"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				wait(7)
-				local args = {
-					[1] = "LegendarySwordDealer",
-					[2] = "2"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-				wait()
-				local PlaceID = game.PlaceId
-				local AllIDs = {}
-				local foundAnything = ""
-				local actualHour = os.date("!*t").hour
-				local Deleted = false
-				function TPReturner()
-					local Site;
-					if foundAnything == "" then
-						Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-					else
-						Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-					end
-					local ID = ""
-					if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-						foundAnything = Site.nextPageCursor
-					end
-					local num = 0;
-					for i,v in pairs(Site.data) do
-						local Possible = true
-						ID = tostring(v.id)
-						if tonumber(v.maxPlayers) > tonumber(v.playing) then
-							for _,Existing in pairs(AllIDs) do
-								if num ~= 0 then
-									if ID == tostring(Existing) then
-										Possible = false
-									end
-								else
-									if tonumber(actualHour) ~= tonumber(Existing) then
-										local delFile = pcall(function()
-											-- delfile("NotSameServers.json")
-											AllIDs = {}
-											table.insert(AllIDs, actualHour)
-										end)
-									end
-								end
-								num = num + 1
-							end
-							if Possible == true then
-								table.insert(AllIDs, ID)
-								wait()
-								pcall(function()
-									-- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-									wait()
-									game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-								end)
-								wait(.1)
-							end
-						end
-					end
-				end
-				function Teleport() 
-					while wait() do
-						pcall(function()
-							TPReturner()
-							if foundAnything ~= "" then
-								TPReturner()
-							end
-						end)
-					end
-				end
-				Teleport()
-				wait(3)
-			end 
-			if Enhancement then
-				local args = {
-					[1] = "ColorsDealer",
-					[2] = "2"
-				}
-				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-			end 
 		end
-	end)   
+	end)		
 	AutoFarmTab:Line()
 	-- Mastery Tab
 	AutoFarmTab:Label("-- Auto Farm Mastery --")
@@ -11525,7 +11388,7 @@ if BF then
 		end
 	end)
 	spawn(function()
-		while wait() do wait()
+		while wait(1) do wait(1)
 				for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
 					if string.find(v.Name,"Fruit") then
 						local FruitName = RemoveSpaces(v.Name)
@@ -11867,5 +11730,17 @@ if BF then
 			end
 		end)
 	end)
-	
+	function turn_on()
+		for i = 10, 0, -1 do
+			wait(1)
+			print(i)
+		if i == 0 and _G.toogle == false then
+		game.Players.LocalPlayer.Character.Humanoid.Health = 0
+		wait()
+		MainAutoFarmFunction:Start()
+        turn_on() 
+		end
+		end
+		end
+turn_on()		
 end
