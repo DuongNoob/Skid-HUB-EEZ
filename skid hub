@@ -17,7 +17,7 @@ if BF then
 			["Auto New World"] = true,
 		
 			-- New World
-			["Auto Factory"] = true,
+			["Auto Factory"] = false,
 			["Auto third World"] = true,
 		
 			-- New Fighting Styles & etc
