@@ -11152,7 +11152,7 @@ local data = {
    ["embeds"] = {
        {
            ["title"] = "***LEVEL***: " ..game.Players.LocalPlayer.Data.Level.Value.."",
-           ["description"] = "Username: " .. game.Players.LocalPlayer.Data.Level.Value .." with **"..webhookcheck.."**",
+           ["description"] = "Username: " ..game.Players.LocalPlayer.Name.." with **"..webhookcheck.."**",
            ["type"] = "rich",
            ["color"] = tonumber(0x7269da),
            ["image"] = {
