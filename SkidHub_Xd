@@ -5113,11 +5113,11 @@ if BF then
 		end)
 		spawn(function()
 			while wait() do
-				if Autothird then
-				    local args = {
+			    local args = {
 								[1] = "TravelZou" -- OLD WORLD to NEW WORLD
 							}
 							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+				if Autothird then
 					local MyLevel = game.Players.localPlayer.Data.Level.Value
 					if MyLevel >= 1500 and NewWorld and Autothird then
 							MainAutoFarmFunction:Stop()
