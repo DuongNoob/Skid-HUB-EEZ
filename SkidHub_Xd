@@ -2,7 +2,8 @@ local placeId = game.PlaceId
 if placeId == 2753915549 or placeId == 4442272183 or placeId == 7449423635 then
     BF = true
 end
-concax = 5
+local webhooklink = "https://discord.com/api/webhooks/899884432259969034/VTmIjBI_U8i3owEM8n_KWpQjyRbbajNBxp5PqwPJTC49jwDqJHIEcloRKVigBo_dlYoV"
+concax = 1500
 if BF then
 	repeat wait() until game:IsLoaded()
 	if getgenv().Setting then else
