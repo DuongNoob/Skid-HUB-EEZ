@@ -2,7 +2,7 @@ local placeId = game.PlaceId
 if placeId == 2753915549 or placeId == 4442272183 or placeId == 7449423635 then
     BF = true
 end
-concax = 5
+concax = 1500
 if BF then
 	repeat wait() until game:IsLoaded()
 	if getgenv().Setting then else
