@@ -2,7 +2,7 @@ local placeId = game.PlaceId
 if placeId == 2753915549 or placeId == 4442272183 or placeId == 7449423635 then
     BF = true
 end
-concax = 1500
+concax = 5
 if BF then
 	repeat wait() until game:IsLoaded()
 	if getgenv().Setting then else
@@ -5236,8 +5236,12 @@ if BF then
 									end
 	
 									for i,v in next,game.ReplicatedStorage:WaitForChild("Remotes").CommF_:InvokeServer("GetFruits") do
-										if v.Price >= 1000000 then  
+									    local donequest1m = false
+										if v.Price >= 1000000 then
 											table.insert(TabelDevilFruitOpen,v.Name)
+										local donequest1m = true	
+										elseif donequest1m == false then 
+										    MainAutoFarmFunction:Start()	
 										end
 									end
 	
@@ -10708,10 +10712,11 @@ if BF then
 	
 	local string_1 = "getInventoryFruits";
 	local Target = game:GetService("ReplicatedStorage").Remotes["CommF_"];
+	TabelDevilFruitStore = {}
 	for i,v in pairs(Target:InvokeServer(string_1)) do
 		for i1,v1 in pairs(v) do
 			if i1 == "Name" then 
-				print(TabelDevilFruitStore,v1)
+				table.insert(TabelDevilFruitStore,v1)
 			end
 		end
 	end
@@ -11019,9 +11024,7 @@ if BF then
 		if i == 0  then
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		wait()
-		local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
-
-local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
+local placeId = game.PlaceId
 
 if placeId == 2753915549 then
     world = "sea1"
@@ -11029,50 +11032,32 @@ elseif placeId == 4442272183 then
     world = "sea2"
 elseif placeId == 7449423635 then
     world = "sea3"
-if MyAccount then
-   MyAccount:SetDescription(world.." Level: "..game.Players.LocalPlayer.Data.Level.Value.."")
-
+end
+if KRNL_LOADED and "Krnl" then
+requestconcax = http_request
+elseif syn and "Synapse X" then
+requestconcax = syn.request
+end
+requestconcax ({
+    Url = "http://localhost:7963/SetDescription?Account="..game.Players.LocalPlayer.Name.."";
+    Method = "POST";
+    Body = world.." Level: "..game.Players.LocalPlayer.Data.Level.Value..""
+            })
 		MainAutoFarmFunction:Start()
         turn_on()
-end end end end end end
+end
+end
+end
 spawn(function()
     while wait(.25) do
 if game.Players.LocalPlayer.Data.Level.Value == 2300 then
-MyAccount:SetDescription(world.." Level: "..game.Players.LocalPlayer.Data.Level.Value.."")
-local webhookcheck =
-   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
-   secure_load and "Sentinel" or
-   KRNL_LOADED and "Krnl" or
-   SONA_LOADED and "Sona" or
-   "Kid with shit exploit"
-
-local url = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
-local data = {
-   ["content"] = "@everyone",
-   ["embeds"] = {
-       {
-           ["title"] = "***LEVEL***: " ..game.Players.LocalPlayer.Data.Level.Value.."",
-           ["description"] = "Username: " ..game.Players.LocalPlayer.Name.." with **"..webhookcheck.."**",
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da),
-           ["image"] = {
-               ["url"] ="https://cdn.discordapp.com/attachments/854623767233560598/962597539520077904/277949638_1064675374143424_1050661255743237333_n.mp4"..
-                   tostring(game:GetService("Players").LocalPlayer.Name)
-           }
-       }
-   }
-}
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-local headers = {
-   ["content-type"] = "application/json"
-}
-request = http_request or request or HttpPost or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(abcdef)
-wait(1)
-loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()
+requestconcax ({
+    Url = "http://localhost:7963/SetDescription?Account="..game.Players.LocalPlayer.Name.."";
+    Method = "POST";
+    Body = world.." Level: "..game.Players.LocalPlayer.Data.Level.Value..""
+            })
 end
 end
 end)
 turn_on()
+end
