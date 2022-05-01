@@ -11036,7 +11036,6 @@ spawn(function()
     while wait(.25) do
 if game.Players.LocalPlayer.Data.Level.Value == 2300 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/test%20code"))()
-        wait(1)
     loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()    
 end
 end
