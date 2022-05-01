@@ -11022,11 +11022,9 @@ if BF then
 			wait(1)
 			print(i)
 		if i == 0  then
-		game.Players.LocalPlayer.Character.Humanoid.Health = 0
+game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		wait()
 local placeId = game.PlaceId
-
-loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/test%20code"))()
 		MainAutoFarmFunction:Start()
         turn_on()
 end
@@ -11034,8 +11032,8 @@ end
 end
 spawn(function()
     while wait(.25) do
-if game.Players.LocalPlayer.Data.Level.Value == 2300 then
 loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/test%20code"))()
+if game.Players.LocalPlayer.Data.Level.Value == 2300 then
     loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()    
 end
 end
