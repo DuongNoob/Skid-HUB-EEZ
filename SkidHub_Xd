@@ -5136,6 +5136,10 @@ if BF then
 									if game.Workspace.Enemies:FindFirstChild("rip_indra [Lv. 1500] [Boss]") then 	
 										for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 											if v.Name == "rip_indra [Lv. 1500] [Boss]" and v:FindFirstChild("Humanoid")and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+											    local args = {
+								[1] = "TravelZou" -- OLD WORLD to NEW WORLD
+							}
+							game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 												repeat wait()
 													if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
 														Farmtween = toTarget(v.HumanoidRootPart.Position,v.HumanoidRootPart.CFrame)
@@ -10704,11 +10708,10 @@ if BF then
 	
 	local string_1 = "getInventoryFruits";
 	local Target = game:GetService("ReplicatedStorage").Remotes["CommF_"];
-	TabelDevilFruitStore = {}
 	for i,v in pairs(Target:InvokeServer(string_1)) do
 		for i1,v1 in pairs(v) do
 			if i1 == "Name" then 
-				table.insert(TabelDevilFruitStore,v1)
+				print(TabelDevilFruitStore,v1)
 			end
 		end
 	end
@@ -11016,46 +11019,26 @@ if BF then
 		if i == 0  then
 		game.Players.LocalPlayer.Character.Humanoid.Health = 0
 		wait()
-local webhookcheck =
-   is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
-   secure_load and "Sentinel" or
-   KRNL_LOADED and "Krnl" or
-   SONA_LOADED and "Sona" or
-   "Kid with shit exploit"
+		local RAMAccount = loadstring(game:HttpGet'https://raw.githubusercontent.com/ic3w0lf22/Roblox-Account-Manager/master/RAMAccount.lua')()
 
-local url = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
-local data = {
-   ["content"] = "CONCAX",
-   ["embeds"] = {
-       {
-           ["title"] = "***LEVEL***: " ..game.Players.LocalPlayer.Data.Level.Value.."",
-           ["description"] = "Username: " ..game.Players.LocalPlayer.Name.." with **"..webhookcheck.."**",
-           ["type"] = "rich",
-           ["color"] = tonumber(0x7269da),
-           ["image"] = {
-               ["url"] ="https://cdn.discordapp.com/attachments/854623767233560598/962597539520077904/277949638_1064675374143424_1050661255743237333_n.mp4"..
-                   tostring(game:GetService("Players").LocalPlayer.Name)
-           }
-       }
-   }
-}
-local newdata = game:GetService("HttpService"):JSONEncode(data)
+local MyAccount = RAMAccount.new(game:GetService'Players'.LocalPlayer.Name)
 
-local headers = {
-   ["content-type"] = "application/json"
-}
-request = http_request or request or HttpPost or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(abcdef)
+if placeId == 2753915549 then
+    world = "sea1"
+elseif placeId == 4442272183 then
+    world = "sea2"
+elseif placeId == 7449423635 then
+    world = "sea3"
+if MyAccount then
+   MyAccount:SetDescription(world.." Level: "..game.Players.LocalPlayer.Data.Level.Value.."")
+
 		MainAutoFarmFunction:Start()
         turn_on()
-end
-end
-end
+end end end end end end
 spawn(function()
     while wait(.25) do
 if game.Players.LocalPlayer.Data.Level.Value == 2300 then
-
+MyAccount:SetDescription(world.." Level: "..game.Players.LocalPlayer.Data.Level.Value.."")
 local webhookcheck =
    is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
    secure_load and "Sentinel" or
@@ -11093,4 +11076,3 @@ end
 end
 end)
 turn_on()
-end
