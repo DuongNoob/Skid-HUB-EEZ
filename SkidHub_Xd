@@ -11030,7 +11030,24 @@ end
 end
 spawn(function()
     while wait(.25) do
-loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/test%20code"))()
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+    world = "sea1"
+elseif placeId == 4442272183 then
+    world = "sea2"
+elseif placeId == 7449423635 then
+    world = "sea3"
+end
+if KRNL_LOADED and "Krnl" then
+requestconcax = http_request
+elseif syn and "Synapse X" then
+requestconcax = syn.request
+end
+requestconcax ({
+                Url = "http://localhost:7963/SetDescription?Account="..game.Players.LocalPlayer.Name.."";
+                Method = "POST";
+                Body = world.." Level: "..game.Players.LocalPlayer.Data.Level.Value..""
+            })
 if game.Players.LocalPlayer.Data.Level.Value == 2300 then
     loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()    
 end
