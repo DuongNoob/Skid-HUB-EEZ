@@ -19,10 +19,10 @@ local function GET(Method, Account, ...)
         Url = Url .. '&Password=' .. WebserverSettings.Password
     end
     
-    local Response = http_request or request or HttpPost or syn.request {
+    local Response = http_request({
         Method = 'GET',
         Url = Url
-    }
+    })
 
     if Response.StatusCode ~= 200 then return false end
 
@@ -41,11 +41,11 @@ local function POST(Method, Account, Body, ...)
         Url = Url .. '&Password=' .. WebserverSettings.Password
     end
     
-    local Response = http_request or request or HttpPost or syn.request {
+    local Response = http_request({ 
         Method = 'POST',
         Url = Url,
         Body = Body
-    }
+    })
 
     if Response.StatusCode ~= 200 then return false end
 
