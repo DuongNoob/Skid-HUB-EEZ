@@ -7961,10 +7961,8 @@ if BF then
 	end)
 	spawn(function()
 		while wait() do
-			if brandom then
 				game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones","Buy",1,1)
 			end
-		end
 	end)  
 	AutoFarmMiscTab:Label("Auto Tushita",true)
 	AutoFarmMiscTab:Toggle("Auto Tushita",_G.AutoEnma,function(v)
