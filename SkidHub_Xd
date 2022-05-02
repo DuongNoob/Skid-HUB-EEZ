@@ -11029,7 +11029,7 @@ end
 end
 end
 spawn(function()
-    while wait(.25) do
+    while wait(0.25) do
 local placeId = game.PlaceId
 if placeId == 2753915549 then
     world = "sea1"
@@ -11049,6 +11049,7 @@ requestconcax ({
                 Body = world.." Level: "..game.Players.LocalPlayer.Data.Level.Value..""
             })
 if game.Players.LocalPlayer.Data.Level.Value == 2300 then
+wait(5)
     loadstring(game:GetObjects("rbxassetid://2662507900")[1].Source)()    
 end
 end
