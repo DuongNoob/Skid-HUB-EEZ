@@ -9,6 +9,10 @@ getgenv().ItemsToFarm = {
         Max = 10,
         Sell = false,
     },
+	["DIO's Diary"] = {
+        Max = 10,
+        Sell = false,
+    },
 
 	["Rib Cage of The Saint's Corpse"] = {
         Max = 10,
