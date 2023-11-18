@@ -437,7 +437,10 @@ itemsMessage = itemsMessage .. "Current pity: ".. CalculateSkinPity() .. "%\n"
 SendWebhook(itemsMessage)
 if getgenv().wantedPity == 0 then
     game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
-end
+game:GetService("TeleportService").TeleportInitFailed:Connect(function()
+    game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
+		end
+	end)
 while serverToHop == "notyet" do task.wait(1) end
 
 if CalculateSkinPity() < getgenv().wantedPity then
