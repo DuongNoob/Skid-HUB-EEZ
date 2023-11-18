@@ -437,6 +437,7 @@ itemsMessage = itemsMessage .. "Current pity: ".. CalculateSkinPity() .. "%\n"
 SendWebhook(itemsMessage)
 if getgenv().wantedPity == 0 then
 game:GetService("StarterGui"):SetCore("ResetButtonCallback", NewEvent)
+end
 while serverToHop == "notyet" do task.wait(1) end
 
 if CalculateSkinPity() < getgenv().wantedPity then
