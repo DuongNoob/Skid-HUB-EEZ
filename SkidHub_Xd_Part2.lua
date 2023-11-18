@@ -9,7 +9,7 @@ getgenv().ItemsToFarm = {
         Max = 10,
         Sell = false,
     },
-	["Dio Diary"] = {
+	["Dio's Diary"] = {
         Max = 10,
         Sell = false,
     },
