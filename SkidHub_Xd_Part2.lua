@@ -436,15 +436,7 @@ LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2005, 500)
 itemsMessage = itemsMessage .. "Current pity: ".. CalculateSkinPity() .. "%\n"
 SendWebhook(itemsMessage)
 if getgenv().wantedPity == 0 then
-local args = {
-        [1] = "Reset",
-        [2] = {
-            ["Anchored"] = false
-        },
-            [3] = "DANK WAS HERE"
-        }
-
-        game:GetService("Players").LocalPlayer.Character.RemoteEvent:FireServer(unpack(args))
+serverHop()
 end
 while serverToHop == "notyet" do task.wait(1) end
 
