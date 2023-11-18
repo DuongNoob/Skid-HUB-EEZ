@@ -436,7 +436,7 @@ LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2005, 500)
 itemsMessage = itemsMessage .. "Current pity: ".. CalculateSkinPity() .. "%\n"
 SendWebhook(itemsMessage)
 if getgenv().wantedPity == 0 then
-serverHop()
+    game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
 end
 while serverToHop == "notyet" do task.wait(1) end
 
