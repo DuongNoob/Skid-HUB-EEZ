@@ -21,11 +21,11 @@ getgenv().WinPositionDelay = 2 --waits for this many after winning to tp back
 --SBR CONFIG
 getgenv().NeverPlayWithLeaderstatsPlayer = true --if see leaderboard player, tp to another game
 getgenv().fuckCompetitive = true --this will automatically use competitive to find sbr servers
-getgenv().ignoreDioQuest = false --if you want corpse parts, use this so that it doesnt hop back to main game, and will automatically do sbr
+getgenv().ignoreDioQuest = true --if you want corpse parts, use this so that it doesnt hop back to main game, and will automatically do sbr
 getgenv().killStand = {""} -- kills these stands first, experimental and kinda buggy
 getgenv().whiteListed = {} --aw, you dont want someone to die? use this
 getgenv().serverHopLessThanAmount = 5 --will find another server at start if initial server contains x amount
-getgenv().amountLeftToSwitch = 1 --lets say 5, it will join another sbr server at 5 players
+getgenv().amountLeftToSwitch = 9 --lets say 5, it will join another sbr server at 5 players
 
 --SBR AEROSMITH CONFIG, DONT MESS UNLESS YOU KNOW WHAT YOU ARE DOING!
 getgenv().delaySwitch = 30 --switches to another player if it doesnt kill it in x seconds
