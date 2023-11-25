@@ -36,7 +36,7 @@ getgenv().panicAeroMultiplier = 3 -- aeroSmithDistance * panicAeroMultiplier = f
 
 --SBR CRASHER CONFIG
 getgenv().empEnabled = true -- crasher
-getgenv().empStrength = 2000 --sbr EMP, higher means they freeze more often, but they might get the disconnected godmode.
+getgenv().empStrength = 1000 --sbr EMP, higher means they freeze more often, but they might get the disconnected godmode.
 getgenv().empDuration = 5 --sbr EMP, higher means it starts emp for longer
 getgenv().empFrequency = 20 --sbr EMP, seconds it take to start EMP again
 getgenv().resolveVelocity = 8 --3-8 recommended value, hard to explain
