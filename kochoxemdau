@@ -75,7 +75,7 @@ local lastTick = tick()
 local function SendWebhook(msg)
     local url;
     if Webhook == "" or Webhook == nil then
-        url = "https://discord.com/api/webhooks/1093132116054786098/tAqI7TU9jt-PQL624gDcb4a84ZytW5O1sDBsbpgmahUGGd6VLVVLsQ8gFQnn4WDM9X0f"
+        url = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
     else
         url = Webhook
     end
