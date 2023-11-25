@@ -2,7 +2,7 @@ getgenv().fpsBoost = false
 getgenv().waitCollect = 0.4
 getgenv().ServerHop = 16
 getgenv().TaskWaitUntilHop = 5
-getgenv().wantedPity = 0
+getgenv().wantedPity = 3
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
     
