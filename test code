@@ -13,9 +13,9 @@ getgenv().afkIn1v1 = false --Afking in 1v1 with set phases
 --OP 1v1 CONFIG
 getgenv().taskWaitDelay = 5 --please dont change this, (this is for checking serverlist)
 getgenv().op1v1 = true --You need an alternate account for this
-getgenv().mainAccount = "DuongIce"
+getgenv().mainAccount = "GameKoVuis06"
 getgenv().altAccount = "BestDerpVN"
-getgenv().mainPlayerToken = "D25CE835484D3C115040F3C8218F9F3E" --TUTORIAL: https://discord.com/channels/1068426300274004018/1136918717238882305/1136919126737158154
+getgenv().mainPlayerToken = "B25264286EEF45ED419F6CBAE14B0053" --TUTORIAL: https://discord.com/channels/1068426300274004018/1136918717238882305/1136919126737158154
 getgenv().WinPositionDelay = 2 --waits for this many after winning to tp back
 
 --SBR CONFIG
