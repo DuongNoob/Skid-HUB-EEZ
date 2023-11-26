@@ -458,6 +458,9 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
         if LocalPlayer.PlayerStats.Spec.Value == "Hamon (Jonathan Joestar)" then
             if Character.Hamon.Value <= 1 then
                 Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
+            if LocalPlayer.Character.Rage.Value >= 80 then
+                    LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
+                end           
             end
         end
     end
@@ -518,7 +521,7 @@ local function checkPrestige(level, prestige)
 end
 
 local function allocateSkills() --this should allocate the destructive shit stuff
-
+LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Constant Rage III",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power V",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power IV",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power III",["SkillTreeType"] = "Stand"})
