@@ -44,4 +44,4 @@ getgenv().resolveVelocity = 8 --3-8 recommended value, hard to explain
 --MISC CONFIG
 getgenv().debugMode = false -- Want to be a good boy and report all the bugs and not make others rage? turn this on and whenever you encounter a bug, record it and screenshot logs!
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/v2"))("xenon autotwoh on top")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Screenatyouruse/Akebi-GC/master/b.lua"))("xenon autotwoh on top")
