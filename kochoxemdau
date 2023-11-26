@@ -457,12 +457,12 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
     local function HamonCharge()
         if LocalPlayer.PlayerStats.Spec.Value == "Hamon (Jonathan Joestar)" then
             if Character.Hamon.Value <= 1 then
-                Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
-            if LocalPlayer.Character.Rage.Value >= 80 then
-                    LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
-                end           
+                Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})     
             end
         end
+               if LocalPlayer.Character.Rage.Value >= 80 then
+                    LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
+        end 
     end
 
     local function BlockBreaker()
@@ -522,6 +522,7 @@ end
 
 local function allocateSkills() --this should allocate the destructive shit stuff
 LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Constant Rage III",["SkillTreeType"] = "Stand"})
+LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Anger Issues III",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power V",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power IV",["SkillTreeType"] = "Stand"})
     RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power III",["SkillTreeType"] = "Stand"})
