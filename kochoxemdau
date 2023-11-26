@@ -18,7 +18,7 @@ local HRP = Character.PrimaryPart
 local part
 local dontTPOnDeath = true
 
-if LocalPlayer.PlayerStats.Level.Value == 50 then while true do print("Level 50, Auto pres disabled") task.wait(9999999) loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() end end
+if LocalPlayer.PlayerStats.Level.Value == 50 then while true do print("Level 50, Auto pres disabled") loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() task.wait(9999999)  end end
 
 if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
     print("I FOUND IT")
