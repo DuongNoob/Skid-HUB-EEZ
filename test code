@@ -21,7 +21,7 @@ getgenv().WinPositionDelay = 2 --waits for this many after winning to tp back
 --SBR CONFIG
 getgenv().NeverPlayWithLeaderstatsPlayer = true --if see leaderboard player, tp to another game
 getgenv().fuckCompetitive = true --this will automatically use competitive to find sbr servers
-getgenv().ignoreDioQuest = true --if you want corpse parts, use this so that it doesnt hop back to main game, and will automatically do sbr
+getgenv().ignoreDioQuest = false --if you want corpse parts, use this so that it doesnt hop back to main game, and will automatically do sbr
 getgenv().killStand = {""} -- kills these stands first, experimental and kinda buggy
 getgenv().whiteListed = {} --aw, you dont want someone to die? use this
 getgenv().serverHopLessThanAmount = 5 --will find another server at start if initial server contains x amount
@@ -44,4 +44,4 @@ getgenv().resolveVelocity = 8 --3-8 recommended value, hard to explain
 --MISC CONFIG
 getgenv().debugMode = false -- Want to be a good boy and report all the bugs and not make others rage? turn this on and whenever you encounter a bug, record it and screenshot logs!
 
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Screenatyouruse/Akebi-GC/master/b.lua"))("xenon autotwoh on top")
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/v2"))("xenon autotwoh on top")
