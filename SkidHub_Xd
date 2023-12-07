@@ -1,5 +1,24 @@
 -- NORMAL VERSION
 repeat wait() until game:IsLoaded()
+repeat task.wait() until game.Players
+repeat task.wait() until game.Players.LocalPlayer
+repeat task.wait() until game.Players.LocalPlayer:FindFirstChild("PlayerGui")
+repeat task.wait() until game.Players.LocalPlayer.PlayerGui:FindFirstChild("Main");
+UserSettings():GetService('UserGameSettings').MasterVolume = 0;
+settings().Rendering.QualityLevel = 1;
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat,false)
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList,false)
+game:GetService("Lighting").GlobalShadows = false
+for key, object in pairs(workspace:GetDescendants()) do
+    if object:IsA("Part") or object:IsA("UnionOperation") or object:IsA("MeshPart") then
+        object.Material = Enum.Material.SmoothPlastic
+    elseif  (object:IsA("Texture") or object:IsA("Explosion") or object:IsA("ColorCorrectionEffect") or 
+                object:IsA("Atmosphere") or object:IsA("SunRaysEffect") or object:IsA("BlurEffect") or 
+                object:IsA("RainyStone") or object:IsA("Weather")  or object:IsA("BloomEffect")
+                or object:IsA("Lighting") or object:IsA("FogEnd") or object:IsA("DepthOfFieldEffect")) then
+        object:Destroy()
+    end
+end
 _G.BypassTeleport = true
 _G["Fumo Blox Fruit - HoHo Hub Kaitun V3"] = {
     MAIN_UI_COLOR = Color3.fromRGB(255, 165, 0), -- Color3.fromRGB(170, 85, 255)
