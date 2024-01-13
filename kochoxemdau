@@ -463,8 +463,8 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
              if LocalPlayer.Character:FindFirstChild("Rage") then
             if LocalPlayer.Character.Rage.Value >= 80 then
                     LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
-                 end
-end
+                   end
+                end
             end
         end
     end
