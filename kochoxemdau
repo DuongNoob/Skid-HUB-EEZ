@@ -500,6 +500,7 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
         end
 
         task.spawn(HamonCharge)
+        wait()
         task.spawn(setStandMorphPosition)
         task.spawn(BlockBreaker)
     end
