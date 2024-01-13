@@ -455,9 +455,11 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
     end
 
     local function HamonCharge()
-        if LocalPlayer.PlayerStats.Spec.Value == "Hamon (Jonathan Joestar)" then
-            if Character.Hamon.Value <= 1 then
-                Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})     
+        if LocalPlayer.Character:FindFirstChild("Hamon") then
+            if Character.Hamon.Value <= 0 then
+                LocalPlayer.Character.StandMorph.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                LocalPlayer.Character.RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Charge"}) --to prevent overloading
+                LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
             end
         end
                if LocalPlayer.Character.Rage.Value >= 80 then
