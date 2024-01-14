@@ -24,21 +24,22 @@ local dontTPOnDeath = true
 if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
 
 if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
-    print("I FOUND IT")
-    local HUD = game:GetService("ReplicatedStorage").Objects.HUD:Clone()
-    HUD.Parent = LocalPlayer.PlayerGui
-end
+        print("I FOUND IT")
+        local HUD = game.ReplicatedStorage.Objects.HUD:Clone()
+        HUD.Parent = LocalPlayer.PlayerGui
+    end
 
 pcall(function()
     print("I DID FOUND IT, MAYBE IT WILL WORK?")
-    RemoteEvent:FireServer("PressedPlay")
+    LocalPlayer.Character.RemoteEvent:FireServer("PressedPlay")
 
-    LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
-    task.wait(0.5)
-    LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
+    if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1") then
+        LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
+    end
 
-    workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
-    workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89, 2048)
+    if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
+        LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
+    end
 end)
 
 -- data
