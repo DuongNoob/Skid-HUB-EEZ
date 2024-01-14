@@ -8,7 +8,10 @@ getgenv().standList =  {
 }
 
 repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-wait(2)
+UserSettings():GetService('UserGameSettings').MasterVolume = 0;
+settings().Rendering.QualityLevel = 1;
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat,false)
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList,false)
 local LocalPlayer = game.Players.LocalPlayer
 local Character = LocalPlayer.Character
 task.wait(0.15)
