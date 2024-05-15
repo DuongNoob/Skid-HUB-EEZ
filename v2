@@ -920,10 +920,10 @@ local function wipeSBR()
         LocalPlayer.Character.Humanoid.Sit = false
         LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2635, 499, -3894)
     until LocalPlayer.Character.HumanoidRootPart.CFrame == CFrame.new(-2635, 499, -3894)
-
+  
     if not getgenv().ignoreDioQuest then
         getgenv().amountLeftToSwitch = 9
-
+print(#workspace.Living:GetChildren())
         workspace.Living.ChildRemoved:Connect(function()
             if #workspace.Living:GetChildren() <= getgenv().amountLeftToSwitch then
                 joinRandomSBR()
