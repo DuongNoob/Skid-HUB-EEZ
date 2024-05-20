@@ -1015,7 +1015,7 @@ local function wipeSBR()
     end
 
     for playersLeft = #shuffledPlayer, 1, -1 do
-        debugLog(playersLeft, "sbrwipe")
+        print(playersLeft, "sbrwipe")
         local player = shuffledPlayer[playersLeft]
         if not workspace.Living:FindFirstChild(player.Name) or table.find(getgenv().whiteListed, player.Name) then
             continue
