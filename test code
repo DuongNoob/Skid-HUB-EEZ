@@ -25,7 +25,7 @@ getgenv().ignoreDioQuest = false --if you want corpse parts, use this so that it
 getgenv().killStand = {""} -- kills these stands first, experimental and kinda buggy
 getgenv().whiteListed = {} --aw, you dont want someone to die? use this
 getgenv().serverHopLessThanAmount = 5 --will find another server at start if initial server contains x amount
-getgenv().amountLeftToSwitch = 9 --lets say 5, it will join another sbr server at 5 players
+getgenv().amountLeftToSwitch = 12 --lets say 5, it will join another sbr server at 5 players
 
 --SBR AEROSMITH CONFIG, DONT MESS UNLESS YOU KNOW WHAT YOU ARE DOING!
 getgenv().delaySwitch = 30 --switches to another player if it doesnt kill it in x seconds
