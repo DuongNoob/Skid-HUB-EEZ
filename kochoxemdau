@@ -23,13 +23,12 @@ local dontTPOnDeath = true
 
 if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
 
-if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
+ if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
         print("I FOUND IT")
         local HUD = game.ReplicatedStorage.Objects.HUD:Clone()
         HUD.Parent = LocalPlayer.PlayerGui
     end
 
-pcall(function()
     print("I DID FOUND IT, MAYBE IT WILL WORK?")
     LocalPlayer.Character.RemoteEvent:FireServer("PressedPlay")
 
@@ -40,7 +39,7 @@ pcall(function()
     if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
         LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
     end
-end)
+end
 
 -- data
 local Data = { }
