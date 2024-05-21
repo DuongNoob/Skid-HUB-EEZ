@@ -39,7 +39,6 @@ if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https
     if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
         LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
     end
-end
 
 -- data
 local Data = { }
