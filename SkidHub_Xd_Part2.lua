@@ -36,9 +36,7 @@ repeat task.wait() until game.Players.LocalPlayer
 repeat task.wait() until game.Players.LocalPlayer.Character
 repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("RemoteEvent")
 
-if getgenv().fpsBoost then
-    game:GetService("RunService"):Set3dRenderingEnabled(false)
-end
+
 
 local LocalPlayer = game.Players.LocalPlayer
 
