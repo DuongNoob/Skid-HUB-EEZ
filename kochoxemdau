@@ -39,7 +39,15 @@ if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https
     if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
         LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
     end
-
+local function FireButton(x)
+    for i, v in pairs(getconnections(x.MouseButton1Click)) do 
+        v:Fire() wait(0.5)
+    end
+end
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
 -- data
 local Data = { }
 local File = pcall(function()
