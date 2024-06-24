@@ -220,20 +220,14 @@ pcall(function()
 end)
 local function FireButton(x)
     for i, v in pairs(getconnections(x.MouseButton1Click)) do 
-        v:Function()
+        v:Fire() wait(0.5)
     end
 end
 if getgenv().fpsBoost then
 FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
-wait(0.5)
 FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
-wait(0.5)
-if game:GetService("Players").LocalPlayer.LowGFX then
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
-else
 FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
-end
-	end
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
 
 hookfunction(workspace.Raycast, function()
     return
