@@ -457,7 +457,7 @@ local function FireButton(x)
         v:Function()
     end
 end
-if getgenv().fpsBoost == true then
+if getgenv().fpsBoost then
 FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
 wait(0.5)
 FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
