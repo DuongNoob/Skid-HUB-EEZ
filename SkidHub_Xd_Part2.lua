@@ -3,7 +3,7 @@ getgenv().waitCollect = 0.5
 getgenv().webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
 getgenv().ServerHop = 16
 getgenv().TaskWaitUntilHop = 5
-getgenv().wantedPity = 0
+getgenv().wantedPity = 3.5
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
     ["Zepellin's Headband"] = {
@@ -451,3 +451,23 @@ while serverToHop == "notyet" do task.wait(1) end
 if CalculateSkinPity() < getgenv().wantedPity then
     useRib()
 end
+local LocalPlayer = game.Players.LocalPlayer
+local function FireButton(x)
+    for i, v in pairs(getconnections(x.MouseButton1Click)) do 
+        v:Function()
+    end
+end
+if getgenv().fpsBoost == true then
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+wait(0.5)
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
+wait(0.5)
+if game:GetService("Players").LocalPlayer.LowGFX then
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+else
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
+end
+	end
+
+
+
