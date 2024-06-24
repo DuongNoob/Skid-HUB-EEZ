@@ -214,10 +214,26 @@ pcall(function()
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
     task.wait(0.5)
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
-
+    
     workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
     workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89, 2048)
 end)
+local function FireButton(x)
+    for i, v in pairs(getconnections(x.MouseButton1Click)) do 
+        v:Function()
+    end
+end
+if getgenv().fpsBoost then
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+wait(0.5)
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
+wait(0.5)
+if game:GetService("Players").LocalPlayer.LowGFX then
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+else
+FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
+end
+	end
 
 hookfunction(workspace.Raycast, function()
     return
@@ -449,23 +465,8 @@ while serverToHop == "notyet" do task.wait(1) end
 if CalculateSkinPity() < getgenv().wantedPity then
     useRib()
 end
-local LocalPlayer = game.Players.LocalPlayer
-local function FireButton(x)
-    for i, v in pairs(getconnections(x.MouseButton1Click)) do 
-        v:Function()
-    end
-end
-if getgenv().fpsBoost then
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
-wait(0.5)
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
-wait(0.5)
-if game:GetService("Players").LocalPlayer.LowGFX then
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
-else
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
-end
-	end
+
+
 
 
 
