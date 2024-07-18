@@ -1,4 +1,4 @@
-getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked for #bruh
+getgenv().waitUntilCollect = 0.7 --Change this if ur getting kicked for #bruh
 getgenv().sortOrder = "Asc" --desc for less players, asc for more
 getgenv().lessPing = false --turn this on if u want lower ping servers, cant guarantee you will see same people using script
 getgenv().autoRequiem = false --requiems star plat or kc (whichever u have)
