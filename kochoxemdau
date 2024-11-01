@@ -312,7 +312,8 @@ end
 
 --main function (entrypoint) of standfarm
 local function attemptStandFarm()
-    LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2010, 500)
+wait(2)
+LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2010, 500)
     
     if LocalPlayer.PlayerStats.Stand.Value == "None" then
         print("DEBUG CHECK, USING MYSTERIOUS ARROW")
