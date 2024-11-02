@@ -279,6 +279,8 @@ local function attemptStandFarm()
         if not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
             useItem("Rokakaka", "II")
+        task.wait(0.05)
+        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             SendWebhook("Got `".. LocalPlayer.PlayerStats.Stand.Value .. "` stand")
             dontTPOnDeath = true
