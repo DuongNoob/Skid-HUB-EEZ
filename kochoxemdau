@@ -561,7 +561,7 @@ local function autoStory()
         
         if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Farming `Ancient Scroll` to purchase `Hamon`")
-            farmItem("Ancient Scroll", 10)
+            getitem("Ancient Scroll", 10)
             task.wait(20)
         end
 
