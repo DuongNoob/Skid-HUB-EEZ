@@ -646,6 +646,7 @@ local function autoStory()
     
         farmItem("Rokakaka", 25)
         farmItem("Mysterious Arrow", 25)
+        farmItem("Zeppeli's Hat", 10)
 
         if countItems("Mysterious Arrow") >= 25 and countItems("Mysterious Arrow") >= 25 then
             print("MAX ARROW AND ROKA, GOT")
