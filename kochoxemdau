@@ -554,10 +554,10 @@ local function autoStory()
             endDialogue("Merchant", "Dialogue5", "Option2")
         end
         
-        if not LocalPlayer.Backpack:FindFirstChild("Zepellin's Headband") then
-            SendWebhook("Farming `Zepellin's Headband` to purchase `Hamon`")
+        if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
+            SendWebhook("Farming `Ancient Scroll` to purchase `Hamon`")
             task.wait(10)
-            farmItem("Zepellin's Headband", 1)
+            farmItem("Ancient Scroll", 1)
         end
 
         if LocalPlayer.PlayerStats.Money.Value <= 10000 then
@@ -572,9 +572,9 @@ local function autoStory()
             collectAndSell("Ancient Scroll", 10)
         end
 
-        if LocalPlayer.Backpack:FindFirstChild("Zepellin's Headband") then
+        if LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Buying `Hamon`")
-            endDialogue("Jonathan","Dialogue5","Option1")
+            endDialogue("Lisa Lisa","Dialogue5","Option1")
             autoStory()
         else
             Teleport()
