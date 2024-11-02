@@ -530,8 +530,8 @@ local function allocateSkills() --this should allocate the destructive shit stuf
         RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power II",["SkillTreeType"] = "Stand"})
         RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power I",["SkillTreeType"] = "Stand"})
         
-        if LocalPlayer.PlayerStats.Spec.Value == "Hamon (Jonathan Joestar)" then
-            RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Ripple V",["SkillTreeType"] = "Spec"})
+        if LocalPlayer.PlayerStats.Spec.Value == "Hamon (William Zeppeli)" then
+            RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Punch V",["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Lung Capacity V", ["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Breathing V",["SkillTreeType"] = "Spec"})
         end
@@ -560,7 +560,7 @@ local function autoStory()
         end
         
         if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
-            SendWebhook("Farming `Ancient Scroll` to purchase `Hamon`")
+            SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
         end
 
@@ -575,9 +575,9 @@ local function autoStory()
             collectAndSell("Ribcage Of The Saint's Corpse", 10)
         end
 
-        if LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
+        if LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
             SendWebhook("Buying `Hamon`")
-            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Ancient Scroll"))
+            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
             repeat
               game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
