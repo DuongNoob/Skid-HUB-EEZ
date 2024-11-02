@@ -580,6 +580,7 @@ local function autoStory()
             
             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
          repeat
+            repeat 
               game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
                  task.wait(0.05)
             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
