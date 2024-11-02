@@ -577,24 +577,7 @@ local function autoStory()
         if LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Buying `Hamon`")
             LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Ancient Scroll"))
-            game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
-           repeat
-                pcall(function()
-                    task.wait()
-                    firesignal(LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                    wait()
-                    firesignal(LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
-                end)
-            until not LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
-            wait(2)   
-            repeat
-                pcall(function()
-                    task.wait()
-                    firesignal(LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                    wait()
-                    firesignal(LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
-                end)
-            until not LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
+            
             autoStory()
         else
             Teleport()
