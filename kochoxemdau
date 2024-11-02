@@ -574,7 +574,6 @@ local function autoStory()
             collectAndSell("Quinton's Glove", 10)
             collectAndSell("Pure Rokakaka", 10)
             collectAndSell("Ribcage Of The Saint's Corpse", 10)
-            collectAndSell("Ancient Scroll", 10)
         end
 
         if LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
