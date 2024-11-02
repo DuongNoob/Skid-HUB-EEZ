@@ -6,7 +6,19 @@ getgenv().TaskWaitUntilHop = 5
 getgenv().wantedPity = 0
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
-    ["Zepellin's Headband"] = {
+    ["Caesar's headband"] = {
+        Max = 10,
+        Sell = false,
+    },
+    ["Clackers"] = {
+        Max = 10,
+        Sell = false,
+    },
+    ["Ancient Scroll"] = {
+        Max = 10,
+        Sell = false,
+    },
+    ["Zeppeli's Hat"] = {
         Max = 10,
         Sell = false,
     },
