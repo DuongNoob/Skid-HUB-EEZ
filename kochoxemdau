@@ -574,6 +574,7 @@ local function autoStory()
 
         if LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Buying `Hamon`")
+            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Ancient Scroll"))
             endDialogue("Lisa Lisa","Dialogue5","Option1")
             autoStory()
         else
