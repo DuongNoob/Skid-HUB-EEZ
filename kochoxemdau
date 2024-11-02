@@ -561,7 +561,7 @@ local function autoStory()
         
         if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Farming `Ancient Scroll` to purchase `Hamon`")
-            farmItem("Ancient Scroll", 1)
+            farmItem("Ancient Scroll", 10)
         end
 
         if LocalPlayer.PlayerStats.Money.Value <= 10000 then
@@ -679,7 +679,7 @@ local function autoStory()
             collectAndSell("Steel Ball", 10)
             collectAndSell("Quinton's Glove", 10)
             collectAndSell("Ribcage Of The Saint's Corpse", 10)
-            collectAndSell("Ancient Scroll", 10)
+            
         end
         autoStory()
 
