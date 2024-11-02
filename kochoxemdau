@@ -561,8 +561,7 @@ local function autoStory()
         
         if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
             SendWebhook("Farming `Ancient Scroll` to purchase `Hamon`")
-            getitem("Ancient Scroll", 10)
-            task.wait(20)
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
         end
 
         if LocalPlayer.PlayerStats.Money.Value <= 10000 then
