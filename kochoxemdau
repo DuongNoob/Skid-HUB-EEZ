@@ -450,6 +450,7 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
         if Character.Hamon.Value <= getgenv().HamonCharge then
             RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Charge"})
             Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
+            LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
         end
     end
 
