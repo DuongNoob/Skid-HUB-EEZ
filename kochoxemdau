@@ -560,7 +560,7 @@ local function autoStory()
             endDialogue("Merchant", "Dialogue5", "Option2")
         end
         
-        if not LocalPlayer.Backpack:FindFirstChild("Ancient Scroll") then
+        if not LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
             SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
         loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
         end
