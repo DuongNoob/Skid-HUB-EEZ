@@ -6,6 +6,22 @@ getgenv().TaskWaitUntilHop = 5
 getgenv().wantedPity = 0
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
+    ["Yellow Candy"] = {
+        Max = 10,
+        Sell = false,
+    },	
+    ["Green Candy"] = {
+        Max = 10,
+        Sell = false,
+    },	
+    ["Blue Candy"] = {
+        Max = 10,
+        Sell = false,
+    },	
+    ["Red Candy"] = {
+        Max = 10,
+        Sell = false,
+    },
     ["Caesar's headband"] = {
         Max = 10,
         Sell = false,
