@@ -1,10 +1,10 @@
 getgenv().standList =  {
     ["The World"] = true,
     ["Star Platinum"] = true,
-    ["Star Platinum: The World"] = false,
+    ["Star Platinum: The World"] = true,
     ["Crazy Diamond"] = true,
     ["King Crimson"] = true,
-    ["King Crimson Requiem"] = false
+    ["King Crimson Requiem"] = true
 }
 getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked a lot
 getgenv().sortOrder = "Asc" --desc for less players, asc for more
