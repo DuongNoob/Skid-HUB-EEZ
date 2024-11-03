@@ -562,7 +562,7 @@ local function autoStory()
         
         if not LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
             SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
-        loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
         end
 
         if LocalPlayer.PlayerStats.Money.Value <= 10000 then
@@ -608,6 +608,7 @@ local function autoStory()
             task.wait(10)
             autoStory()
         else
+            loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30) 
             Teleport()
         end
     end
