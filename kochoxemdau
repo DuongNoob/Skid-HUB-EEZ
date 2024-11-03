@@ -770,13 +770,13 @@ local function autoStory()
         end
 
         SendWebhook(
-                "**Prestige 3, Level 50 reached!**" ..
-                "\nTime: `" .. (Data["Time"])/60 .. " minutes or " .. (Data["Time"])/3600 .. " hours`" ..
-                "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
-                "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
-                "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
-                "\nAccount: `" .. LocalPlayer.Name .. "`"
-            )
+            "**Prestige 3, Level 50 reached!**" ..
+            "\nTime: `" .. (tick() - Data["Time"])/60 .. " minutes or " .. (tick() - Data["Time"])/3600 .. " hours`" ..
+            "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
+            "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
+            "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
+            "\nAccount: `" .. LocalPlayer.Name .. "`"
+        )
         pcall(function()
             delfile("AutoPres3_"..LocalPlayer.Name..".txt")
         end)
@@ -784,13 +784,11 @@ local function autoStory()
 end
 
 task.spawn(function()
-    while task.wait(3) do
+    while task.wait(1) do
         if checkPrestige(LocalPlayer.PlayerStats.Level.Value, LocalPlayer.PlayerStats.Prestige.Value) then
             print("Prestiged")
             Teleport()
         elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-            if not Character:FindFirstChild("FocusCam") then
-               Character.FocusCam:Destroy()
             break
         else
             print("not able to prestige yet")
