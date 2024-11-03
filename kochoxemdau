@@ -765,10 +765,6 @@ local function autoStory()
         autoStory()
 
     elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-        if Character:FindFirstChild("FocusCam") then
-            Character.FocusCam:Destroy()
-        end
-
         SendWebhook(
             "**Prestige 3, Level 50 reached!**" ..
             "\nTime: `" .. (tick() - Data["Time"])/60 .. " minutes or " .. (tick() - Data["Time"])/3600 .. " hours`" ..
@@ -784,12 +780,15 @@ local function autoStory()
 end
 
 task.spawn(function()
-    while task.wait(1) do
+    while task.wait(3) do
         if checkPrestige(LocalPlayer.PlayerStats.Level.Value, LocalPlayer.PlayerStats.Prestige.Value) then
             print("Prestiged")
             Teleport()
         elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-            break
+            if not Character:FindFirstChild("FocusCam") then
+                Character.FocusCam:Destroy()
+                break
+            end
         else
             print("not able to prestige yet")
         end
