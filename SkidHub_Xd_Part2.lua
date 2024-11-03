@@ -22,22 +22,6 @@ getgenv().ItemsToFarm = {
         Max = 10,
         Sell = false,
     },
-    ["Caesar's headband"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Clackers"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Ancient Scroll"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Zeppeli's Hat"] = {
-        Max = 10,
-        Sell = false,
-    },
 	["Lucky Arrow"] = {
         Max = 10,
         Sell = false,
