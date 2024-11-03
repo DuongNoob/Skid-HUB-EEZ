@@ -603,19 +603,6 @@ local function autoStory()
             loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30) 
             Teleport()
         end
-     elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-            SendWebhook(
-                "**Prestige 3, Level 50 reached!**" ..
-                "\nTime: `" .. (Data["Time"])/60 .. " minutes or " .. (Data["Time"])/3600 .. " hours`" ..
-                "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
-                "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
-                "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
-                "\nAccount: `" .. LocalPlayer.Name .. "`"
-            )
-            pcall(function()
-                delfile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt")
-            end)
-        end     
     end
         
     while #questPanel:GetChildren() < 2 and repeatCount < 1000 do
@@ -781,6 +768,7 @@ local function autoStory()
         if Character:FindFirstChild("FocusCam") then
             Character.FocusCam:Destroy()
         end
+
         SendWebhook(
                 "**Prestige 3, Level 50 reached!**" ..
                 "\nTime: `" .. (Data["Time"])/60 .. " minutes or " .. (Data["Time"])/3600 .. " hours`" ..
