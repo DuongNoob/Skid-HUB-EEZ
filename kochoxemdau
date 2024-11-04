@@ -508,7 +508,6 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
                 LocalPlayer.Character.StandMorph.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
                 LocalPlayer.Character.RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Breathing"}) --to prevent overloading
                 LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
-                LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
             end
         end
     end
