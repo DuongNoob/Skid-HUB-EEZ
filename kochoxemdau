@@ -1,3 +1,8 @@
+getgenv().waitUntilCollect = 0.7 --Change this if ur getting kicked for #bruh
+getgenv().sortOrder = "Asc" --desc for less players, asc for more
+getgenv().lessPing = false --turn this on if u want lower ping servers, cant guarantee you will see same people using script
+getgenv().autoRequiem = false --requiems star plat or kc (whichever u have)
+getgenv().Webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
 getgenv().standList =  {
     ["The World"] = true,
     ["Star Platinum"] = true,
@@ -6,82 +11,122 @@ getgenv().standList =  {
     ["King Crimson"] = true,
     ["King Crimson Requiem"] = true
 }
-getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked a lot
-getgenv().sortOrder = "Asc" --desc for less players, asc for more
-getgenv().lessPing = false --turn this on if u want lower ping servers, cant guarantee you will see same people using script, and data error 1
-getgenv().autoRequiem = false --turn this on for auto requiem
-getgenv().NPCTimeOut = 15 --timeout for npc not spawning
-getgenv().HamonCharge = 90 --change if u want to charge hamon after every kill (around 90)
-getgenv().webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2" --change this if u want to use ur own webhook
-
-game:GetService("CoreGui").DescendantAdded:Connect(function(child)
-    if child.Name == "ErrorPrompt" then
-        local GrabError = child:FindFirstChild("ErrorMessage",true)
-        repeat task.wait() until GrabError.Text ~= "Label"
-        local Reason = GrabError.Text
-        if Reason:match("kick") or Reason:match("You") or Reason:match("conn") or Reason:match("rejoin") then
-            game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
-        end
-    end
-end)
 
 repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-
+UserSettings():GetService('UserGameSettings').MasterVolume = 0;
+settings().Rendering.QualityLevel = 1;
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat,false)
+game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList,false)
 local LocalPlayer = game.Players.LocalPlayer
 local Character = LocalPlayer.Character
+task.wait(0.15)
 repeat task.wait() until Character:FindFirstChild("RemoteEvent") and Character:FindFirstChild("RemoteFunction")
 local RemoteFunction, RemoteEvent = Character.RemoteFunction, Character.RemoteEvent
 local HRP = Character.PrimaryPart
 local part
 local dontTPOnDeath = true
+repeat wait() until game:IsLoaded()
+local RunService = game:GetService("RunService")
+local player = game:GetService("Players").LocalPlayer
+repeat wait()until game:GetService("Players")
+repeat wait() until game:GetService("Players").LocalPlayer
+repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui
+local blackscreen = function(enable)
+    local playerGui = player:WaitForChild("PlayerGui")
+    if not enable then
+        local sUi = playerGui:FindFirstChild("Blackscreen")
+        if sUi then sUi:Destroy() end
+        return
+    elseif playerGui:FindFirstChild("Blackscreen") then
+        return
+    end
+    local sUi = Instance.new("ScreenGui", playerGui)
+    sUi.Name = "Blackscreen"
+    sUi.DisplayOrder = -727
 
-if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
-
-if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
-    print("I FOUND IT")
-    local HUD = game:GetService("ReplicatedStorage").Objects.HUD:Clone()
-    HUD.Parent = LocalPlayer.PlayerGui
+    local uiFrame = Instance.new("Frame", sUi)
+    uiFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    uiFrame.Size = UDim2.new(0, 72727, 0, 72727)
+    uiFrame.Position = UDim2.new(0, 0, -5, 0)
 end
-
-print("I DID FOUND IT, MAYBE IT WILL WORK?")
-RemoteEvent:FireServer("PressedPlay")
-
-if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1") then
-    LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
-end
-
-if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
-    LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
-end
-
-task.spawn(function()
-    if game.Lighting:WaitForChild("DepthOfField", 10) then
-        game.Lighting.DepthOfField:Destroy()
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+        blackscreen(true)
+local player = game.Players.LocalPlayer
+local Mouse = game:GetService("Players").LocalPlayer:GetMouse()
+local Toggled = false
+local Keybind = "y"
+Mouse.KeyDown:Connect(function(Key)
+    if Key == Keybind then
+        if Toggled then
+        game:GetService("RunService"):Set3dRenderingEnabled(false)
+        blackscreen(true)
+            Toggled = false
+        else
+            Toggled = true
+        blackscreen(false)
+        game:GetService("RunService"):Set3dRenderingEnabled(true)
+        end
     end
 end)
+if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
 
-workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
-workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89, 2048)
+ if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
+        print("I FOUND IT")
+        local HUD = game.ReplicatedStorage.Objects.HUD:Clone()
+        HUD.Parent = LocalPlayer.PlayerGui
+    end
 
+    print("I DID FOUND IT, MAYBE IT WILL WORK?")
+    LocalPlayer.Character.RemoteEvent:FireServer("PressedPlay")
+
+    if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1") then
+        LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
+    end
+
+    if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
+        LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
+    end
 -- data
 local Data = { }
 local File = pcall(function()
-    Data = game:GetService('HttpService'):JSONDecode(readfile("AutoPres3_"..LocalPlayer.Name..".txt"))
+    Data = game:GetService('HttpService'):JSONDecode(readfile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt"))
 end)
 
-if not File and LocalPlayer.PlayerStats.Level.Value ~= 50 then
-    Data = {
-        ["Time"] = tick(),
-        ["Prestige"] = LocalPlayer.PlayerStats.Prestige.Value,
-        ["Level"] = LocalPlayer.PlayerStats.Level.Value
-    }
-    writefile("AutoPres3_"..LocalPlayer.Name..".txt", game:GetService('HttpService'):JSONEncode(Data))
-end
+local timeExecuted = 0
+task.spawn(function()
+	if not File and LocalPlayer.PlayerStats.Level.Value ~= 50 then
+	    while task.wait(1) do
+		timeExecuted = timeExecuted + 1
+		Data = {
+		    ["Time"] = timeExecuted,
+        	    ["Prestige"] = LocalPlayer.PlayerStats.Prestige.Value,
+        	    ["Level"] = LocalPlayer.PlayerStats.Level.Value
+		}
+		writefile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt", game:GetService('HttpService'):JSONEncode(Data))
+	    end
+	else
+    	timeExecuted = Data["Time"]
+	    while task.wait(1) do
+                timeExecuted = timeExecuted + 1
+                Data = {
+                    ["Time"] = timeExecuted,
+           	    ["Prestige"] = LocalPlayer.PlayerStats.Prestige.Value,
+        	    ["Level"] = LocalPlayer.PlayerStats.Level.Value
+                }
+		writefile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt", game:GetService('HttpService'):JSONEncode(Data))
+	    end            
+        end
+end)
 
 -- start
 local lastTick = tick()
 local function SendWebhook(msg)
-    local url = getgenv().webhook
+    local url;
+    if Webhook == "" or Webhook == nil then
+        url = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
+    else
+        url = Webhook
+    end
 
     local data;
     data = {
@@ -107,7 +152,11 @@ local function SendWebhook(msg)
     request(abcdef)
 end
 
-SendWebhook("Loading Xenon V3 - Auto Prestige 3\nCurrent level: `"..LocalPlayer.PlayerStats.Level.Value.."`\nCurrent prestige: `"..LocalPlayer.PlayerStats.Prestige.Value.."`\nTime since start: `" .. (tick() - Data["Time"])/60 .. " minutes`")
+SendWebhook("Loading Xenon V3 - Auto Prestige 3\nCurrent level: `"..LocalPlayer.PlayerStats.Level.Value.."`\nCurrent prestige: `"..LocalPlayer.PlayerStats.Prestige.Value.."`\nTime since start: `" .. (Data["Time"])/60 .. " minutes`")
+
+hookfunction(workspace.Raycast, function() -- noclip bypass
+    return
+end)
 
 local itemHook;
 itemHook = hookfunction(getrawmetatable(game.Players.LocalPlayer.Character.HumanoidRootPart.Position).__index, function(p,i)
@@ -137,6 +186,14 @@ local AllIDs = {}
 local foundAnything = ""
 local actualHour = os.date("!*t").hour
 local function TPReturner()
+    if getgenv().lessPing then
+       game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
+
+        game:GetService("TeleportService").TeleportInitFailed:Connect(function()
+            game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
+        end)
+    end
+ 
     local Site;
     if foundAnything == "" then
        Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=' .. getgenv().sortOrder .. '&limit=100'))
@@ -187,16 +244,6 @@ local function TPReturner()
  local function Teleport()
     while task.wait() do
        pcall(function()
-        if getgenv().lessPing then
-            game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
-     
-            game:GetService("TeleportService").TeleportInitFailed:Connect(function()
-                 game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
-            end)
-            
-            repeat task.wait() until game.JobId ~= game.JobId
-        end
-
        TPReturner()
        if foundAnything ~= "" then
           TPReturner()
@@ -204,6 +251,42 @@ local function TPReturner()
        end)
     end
  end
+
+--captcha solver
+LocalPlayer.PlayerGui.ChildAdded:Connect(function(child)
+	if child.Name == "ScreenGui" then
+        print("fired")
+        local screenGui = LocalPlayer.PlayerGui:WaitForChild("ScreenGui", 5)
+        local part = screenGui:WaitForChild("Part")
+    
+        for _, button in pairs(part:GetDescendants()) do
+            if button:FindFirstChild("Part") then
+                if button:IsA("ImageButton") and button.Part.TextColor3 == Color3.new(0, 1, 0) then
+                    repeat
+                        firesignal(button.MouseEnter)
+                        firesignal(button.MouseButton1Up)
+                        firesignal(button.MouseButton1Click)
+                        firesignal(button.Activated)
+                        task.wait()
+                    until not LocalPlayer.PlayerGui:FindFirstChild("ScreenGui")
+                end
+            end
+        end
+	end
+end)
+
+--// rejoin from kick
+local Prompt = game:GetService("CoreGui"):FindFirstChild("promptOverlay", true)
+Prompt.ChildAdded:Connect(function(Child)
+    if typeof(Child) == "Instance" and Child.Name == "ErrorPrompt" and Child.ClassName == "Frame" then
+        local Error = Child:FindFirstChild("ErrorMessage", true)
+        repeat task.wait() until Error.Text ~= "Label"
+        --if Error.Text:find("kick") or Error.Text:find("conn") or Error.Text:find("rejoin") or Error.Text:find("kicked") then
+            task.wait(1)
+            Teleport()
+        --end
+    end
+end)
 
 part = Instance.new("Part")
 part.Parent = workspace
@@ -222,9 +305,14 @@ local function findItem(itemName)
     for _,item in pairs(game:GetService("Workspace")["Item_Spawns"].Items:GetChildren()) do
         if item:FindFirstChild("MeshPart") and item.ProximityPrompt.ObjectText == itemName then
             if item.ProximityPrompt.MaxActivationDistance == 8 then
-                table.insert(ItemsDict["Items"], item.ProximityPrompt.ObjectText)
-                table.insert(ItemsDict["ProximityPrompt"], item.ProximityPrompt)
-                table.insert(ItemsDict["Position"], item.MeshPart.CFrame)
+                item.ProximityPrompt.RequiresLineOfSight = false
+                item.ProximityPrompt.HoldDuration = 0
+                item.ProximityPrompt.MaxActivationDistance = 30
+                if not table.find(ItemsDict["Position"], item.MeshPart.CFrame) then
+                    table.insert(ItemsDict["Items"], item.ProximityPrompt.ObjectText)
+                    table.insert(ItemsDict["ProximityPrompt"], item.ProximityPrompt)
+                    table.insert(ItemsDict["Position"], item.MeshPart.CFrame)
+                end
             else
                 print("FAKE?")
             end
@@ -260,13 +348,10 @@ local function useItem(aItem, amount)
         LocalPlayer.Character:WaitForChild("RemoteFunction"):InvokeServer("LearnSkill",{["Skill"] = "Worthiness ".. amount,["SkillTreeType"] = "Character"})
         repeat item:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
 		repeat task.wait() until LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.DialogueFrame.Frame.Line001.Container.Group001.Text == "You"
 		firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
     end
 end
 
@@ -282,8 +367,6 @@ local function attemptStandFarm()
         if not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
             useItem("Rokakaka", "II")
-        task.wait(0.05)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             SendWebhook("Got `".. LocalPlayer.PlayerStats.Stand.Value .. "` stand")
             dontTPOnDeath = true
@@ -300,7 +383,8 @@ end
 --teleport not to get caught
 local function getitem(item, itemIndex)
     local gotItem = false
-    local timeout = getgenv().waitUntilCollect + 5
+    local position = item["Position"][itemIndex] - Vector3.new(0,10,0)
+    local timeout = 5
 
     if Character:FindFirstChild("SummonedStand") then
         if Character:FindFirstChild("SummonedStand").Value then
@@ -315,42 +399,18 @@ local function getitem(item, itemIndex)
     task.spawn(function()
         while not gotItem do
             task.wait()
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = item["Position"][itemIndex] - Vector3.new(0,10,0)
+            workspace.CurrentCamera.CFrame = CFrame.lookAt(workspace.CurrentCamera.CFrame.Position, item["Position"][itemIndex].Position)
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = position
         end
     end)
 
     task.wait(getgenv().waitUntilCollect)
 
     task.spawn(function()
-        fireproximityprompt(item["ProximityPrompt"][itemIndex])
-        
-        local screenGui = LocalPlayer.PlayerGui:WaitForChild("ScreenGui",5)
-        
-        if not screenGui then
-            return
-        end
-
-        local screenGuiPart = screenGui:WaitForChild("Part")
-        for _, button in pairs(screenGuiPart:GetDescendants()) do
-            if button:FindFirstChild("Part") then
-                if button:IsA("ImageButton") and button:WaitForChild("Part").TextColor3 == Color3.new(0, 1, 0) then
-                    repeat
-                        firesignal(button.MouseEnter)
-                        firesignal(button.MouseButton1Up)
-                        firesignal(button.MouseButton1Click)
-                        firesignal(button.Activated)
-                        task.wait()
-                    until not LocalPlayer.PlayerGui:FindFirstChild("ScreenGui")
-                end
-            end
-        end
-    end)
-    
-    task.spawn(function()
         for i=timeout, 1, -1 do
+            fireproximityprompt(item["ProximityPrompt"][itemIndex])
             task.wait(1)
         end
-
         if not gotItem then
             gotItem = true
             return
@@ -366,15 +426,12 @@ end
 --farm item with said name and amount
 local function farmItem(itemName, amount)
     local items = findItem(itemName)
-    local amountFirst = countItems(itemName) == amount
 
-    for itemIndex, _ in pairs(items["Position"]) do
-        if countItems(itemName) == amount or amountFirst then
-            print("SUCCESSFULLY BROKE")
-            break
-        else
-            getitem(items, itemIndex)
+    for itemIndex,_ in pairs(items["Position"]) do
+        if countItems(itemName) == amount then
+            return true
         end
+        getitem(items,itemIndex)
     end
     
     return true
@@ -403,12 +460,12 @@ local function storyDialogue()
     end
 end
 
+--[[KILL THEM ALL]]
 local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParameters)
     print("DEBUG CHECK 1", npcName, playerDistance, dontDestroyOnKill, extraParameters)
 
-	local NPC = workspace.Living:WaitForChild(npcName,getgenv().NPCTimeOut)
+	local NPC = workspace.Living:WaitForChild(npcName,5)
 	local beingTargeted = true
-    local doneKilled = false
 	local deadCheck
 
     if not NPC then
@@ -416,73 +473,61 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
     end
 
     local function setStandMorphPosition()
-        pcall(function()
-            if LocalPlayer.PlayerStats.Stand.Value == "None" then
-                HRP.CFrame = NPC.HumanoidRootPart.CFrame - Vector3.new(0, 5, 0)
-                return
-            end
-
-            if not Character:FindFirstChild("SummonedStand").Value or not Character:FindFirstChild("StandMorph") then
-                RemoteFunction:InvokeServer("ToggleStand", "Toggle")
-                return
-            end
-
-            Character.StandMorph.PrimaryPart.CFrame = NPC.HumanoidRootPart.CFrame + NPC.HumanoidRootPart.CFrame.lookVector * -1.1
-            HRP.CFrame = Character.StandMorph.PrimaryPart.CFrame + Character.StandMorph.PrimaryPart.CFrame.lookVector - Vector3.new(0, playerDistance, 0)
-            
-            if not Character:FindFirstChild("FocusCam") then
-                local FocusCam = Instance.new("ObjectValue", Character)
-                FocusCam.Name = "FocusCam"
-                FocusCam.Value = Character.StandMorph.PrimaryPart
-            end
-            
-            if Character:FindFirstChild("FocusCam") and Character.FocusCam.Value ~= Character.StandMorph.PrimaryPart then
-                Character.FocusCam.Value = Character.StandMorph.PrimaryPart
-            end
-        end)
-    end
-
-    local function HamonCharge()
-        if not Character:FindFirstChild("Hamon") then
+        if LocalPlayer.PlayerStats.Stand.Value == "None" then
+            HRP.CFrame = NPC.HumanoidRootPart.CFrame - Vector3.new(0, 5, 0)
             return
         end
 
-        if Character.Hamon.Value <= getgenv().HamonCharge then
-            RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.G",["Skill"] = "Hamon Charge"})
-            Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.G})
-            
+        if Character:FindFirstChild("StandMorph") == nil then
+            RemoteFunction:InvokeServer("ToggleStand", "Toggle")
+            return
+        end
+        
+        if not Character.StandMorph or not Character or not Character.PrimaryPart then
+            task.wait(1)
+            return
+        end
+        
+        Character.StandMorph.PrimaryPart.CFrame = NPC.HumanoidRootPart.CFrame + NPC.HumanoidRootPart.CFrame.lookVector * -1.1
+        HRP.CFrame = Character.StandMorph.PrimaryPart.CFrame + Character.StandMorph.PrimaryPart.CFrame.lookVector * math.random(-3,-2) - Vector3.new(0, playerDistance+5, 0)
+        
+        if not Character:FindFirstChild("FocusCam") then
+            local FocusCam = Instance.new("ObjectValue", Character)
+            FocusCam.Name = "FocusCam"
+            FocusCam.Value = Character.StandMorph.PrimaryPart
+        end
+        
+        if Character:FindFirstChild("FocusCam") and Character.FocusCam.Value ~= Character.StandMorph.PrimaryPart then
+            Character.FocusCam.Value = Character.StandMorph.PrimaryPart
+        end
+    end
+
+    local function HamonCharge()
+        if LocalPlayer.Character:FindFirstChild("Hamon") then
+            if Character.Hamon.Value <= 0 then
+                LocalPlayer.Character.StandMorph.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame
+                LocalPlayer.Character.RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Charge"}) --to prevent overloading
+                LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
+                LocalPlayer.Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.H})
+            end
         end
     end
 
     local function BlockBreaker()
-        if not NPC or NPC.Parent == nil then
-            return
-        end
-    
         if game:GetService("CollectionService"):HasTag(NPC, "Blocking") then
             RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.R})
-        elseif NPC.Humanoid.Health <= 1 then
-            task.spawn(function()
-                task.wait(5)
-                if NPC then
-                    RemoteFunction:InvokeServer("Attack", "m1")
-                end
-            end)
-        elseif NPC.Humanoid.Health >= 1 then
+        else
             RemoteFunction:InvokeServer("Attack", "m1")
         end
     end
-    
 
     deadCheck = LocalPlayer.PlayerGui.HUD.Main.DropMoney.Money.ChildAdded:Connect(function(child)
         local number = tonumber(string.match(child.Name,"%d+"))
+            if number and NPC then
+                deadCheck:Disconnect()
+                beingTargeted = false
 
-        if number and NPC then
-            doneKilled = true
-
-            deadCheck:Disconnect()
-
-            if not dontDestroyOnKill then
+                if not dontDestroyOnKill then
                 NPC:Destroy()
             end
         end
@@ -490,24 +535,24 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
 
     while beingTargeted do
         task.wait()
+
         if not NPC:FindFirstChild("HumanoidRootPart") then
             deadCheck:Disconnect()
             beingTargeted = false
+            NPC:Destroy()
+            return true
         end
-    
+
         if extraParameters then
             extraParameters()
         end
-    
-        task.spawn(setStandMorphPosition)
+
         task.spawn(HamonCharge)
+        task.spawn(setStandMorphPosition)
         task.spawn(BlockBreaker)
     end
-    
-    
-    print(doneKilled)
-    return doneKilled
-end 
+	return true
+end
 
 local function checkPrestige(level, prestige)
     if (level == 35 and prestige == 0) or (level == 40 and prestige == 1) or (level == 45 and prestige == 2) then
@@ -524,258 +569,230 @@ local function checkPrestige(level, prestige)
 end
 
 local function allocateSkills() --this should allocate the destructive shit stuff
-    task.spawn(function()
-        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power V",["SkillTreeType"] = "Stand"})
-        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power IV",["SkillTreeType"] = "Stand"})
-        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power III",["SkillTreeType"] = "Stand"})
-        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power II",["SkillTreeType"] = "Stand"})
-        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power I",["SkillTreeType"] = "Stand"})
-        
-        if LocalPlayer.PlayerStats.Spec.Value == "Hamon (William Zeppeli)" then
-            RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Punch V",["SkillTreeType"] = "Spec"})
-            RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Lung Capacity V", ["SkillTreeType"] = "Spec"})
-            RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Breathing Technique V",["SkillTreeType"] = "Spec"})
-        end
-    end)
+LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Constant Rage III",["SkillTreeType"] = "Stand"})
+LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Anger Issues III",["SkillTreeType"] = "Stand"})
+    RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power V",["SkillTreeType"] = "Stand"})
+    RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power IV",["SkillTreeType"] = "Stand"})
+    RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power III",["SkillTreeType"] = "Stand"})
+    RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power II",["SkillTreeType"] = "Stand"})
+    RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Destructive Power I",["SkillTreeType"] = "Stand"})
+    
+    if LocalPlayer.PlayerStats.Spec.Value == "Hamon (William Zeppeli)" then
+        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Punch V",["SkillTreeType"] = "Spec"})
+        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Lung Capacity V", ["SkillTreeType"] = "Spec"})
+        RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Breathing Technique V",["SkillTreeType"] = "Spec"})
+        RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Charge"})
+    end
 end
 
 local function autoStory()
-    local questPanel = LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests
-    local repeatCount = 0
-    allocateSkills()
-    
+    if LocalPlayer.PlayerStats.Level.Value >= 25 and LocalPlayer.PlayerStats.Prestige.Value >= 1 and LocalPlayer.Backpack:FindFirstChild("Requiem Arrow") and autoRequiem == true and (LocalPlayer.PlayerStats.Stand.Value == "King Crimson" or LocalPlayer.PlayerStats.Stand.Value == "Star Platinum") then
+        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2010, 500)
+        useItem("Requiem Arrow", "V")
+        repeat task.wait() until (LocalPlayer.PlayerStats.Stand.Value ~= "King Crimson" or LocalPlayer.PlayerStats.Stand.Value ~= "Star Platinum")
+        LocalPlayer.Character.Humanoid.Health = 0
+        autoStory()
+    else
+        allocateSkills()
+    end
 
-    if LocalPlayer.PlayerStats.Spec.Value == "None" and LocalPlayer.PlayerStats.Level.Value >= 25 then
-        local function collectAndSell(toolName, amount)
-            farmItem(toolName, amount)
-            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild(toolName))
-            endDialogue("Merchant", "Dialogue5", "Option2")
+    if LocalPlayer.PlayerStats.Spec.Value ~= "None" and LocalPlayer.PlayerStats.Level.Value >= 25 and LocalPlayer.PlayerStats.Level.Value ~= 50 then
+        if not LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests:FindFirstChild("Take down 3 vampires") then
+            endDialogue("William Zeppeli", "Dialogue4", "Option1")
+            SendWebhook("Account: `" .. LocalPlayer.Name .. "`\nTook around: `".. (tick() - lastTick).. " seconds` to complete `Vampire Quest`")
+            lastTick = tick()
         end
+
+        killNPC("Vampire", 5, false)
+        autoStory()
+    end
+
+    if LocalPlayer.PlayerStats.Level.Value < 25 and #LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests:GetChildren() <= 1 then
+        repeat storyDialogue() task.wait(1) until #LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests:GetChildren() > 1
+    end
+
+    for _,questName in pairs(LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests:GetChildren()) do
+        if questName.Name == "Help Giorno by Defeating Security Guards" then
+            print('SECUITY GUARD')
+            SendWebhook("Killing Security Guard `" .. LocalPlayer.PlayerStats.QuestProgress.Value.."/"..LocalPlayer.PlayerStats.QuestMaxProgress.Value .."`")
+            killNPC("Security Guard", 15)
+            storyDialogue()
+            autoStory()
+
+        elseif not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] and LocalPlayer.PlayerStats.Level.Value >= 3 then
+            print('NO STAND?')
+            task.wait(5)
         
-        if not LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
-            SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
-        end
+            if countItems("Rokakaka") < 25 then
+                print("DEBUG, ROKAKAKA GOT")
+                local balls = farmItem("Rokakaka", 25)
+                repeat task.wait() until balls
+            end
+            
+            if countItems("Mysterious Arrow") < 25 then
+                print("DEBUG, MYSTERIOUS ARROW GOT")
+                repeat task.wait() until farmItem("Mysterious Arrow", 25)
+            end
+            
+            if countItems("Mysterious Arrow") >= 25 and countItems("Mysterious Arrow") >= 25 then
+                print("MAX ARROW AND ROKA, GOT")
+                print("ATTEMPTING TO STAND FARM")
+                dontTPOnDeath = false
+                LocalPlayer.Character.Humanoid.Health = 0
+            else
+                Teleport()
+            end
+        
+        elseif questName.Name == "Defeat Leaky Eye Luca" and getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
+            print("LEAKY EYE LUCA")
+            SendWebhook("Killing `Leaky Eye Luca`")
+            killNPC("Leaky Eye Luca", 15)
+            storyDialogue()
+            autoStory()
 
-        if LocalPlayer.PlayerStats.Money.Value <= 10000 then
-            print("WHERE DID THE MONEY GO FOR HAMON?")
-            SendWebhook("Collecting `$10000` for `Hamon`")
-            collectAndSell("Mysterious Arrow", 25)
-            collectAndSell("Rokakaka", 25)
-            collectAndSell("Steel Ball", 10)
-            collectAndSell("Quinton's Glove", 10)
-            collectAndSell("Pure Rokakaka", 10)
-            collectAndSell("Ribcage Of The Saint's Corpse", 10)
-        end
+        elseif questName.Name == "Defeat Bucciarati" then
+            print("BUCCIARATI")
+            SendWebhook("Killing `Bucciarati`")
+            killNPC("Bucciarati", 15)
+            storyDialogue()
+            autoStory()
 
-        if LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
-            SendWebhook("Buying `Hamon`")
-            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
-            game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
-            repeat
+        elseif questName.Name == "Collect $5,000 To Cover For Popo's Real Fortune" then
+            print("WAH WAH I DONT HAVE ENOUGH MONEY")
+            if LocalPlayer.PlayerStats.Money.Value < 5000 then
+                SendWebhook("Collecting `$5000`")
+                local function collectAndSell(toolName, amount)
+                    if countItems(toolName) <= amount then
+                        farmItem(toolName, amount)
+                        Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild(toolName))
+                        endDialogue("Merchant", "Dialogue5", "Option2")
+                        storyDialogue()
+                        autoStory()
+                    end
+
+                    if LocalPlayer.PlayerStats.Money.Value < 5000 then
+                        storyDialogue()
+                        autoStory()
+                    end
+                end
+                task.wait(10)
+                collectAndSell("Rokakaka", 25)
+                collectAndSell("Diamond", 10)
+                collectAndSell("Steel Ball", 10)
+                collectAndSell("Quinton's Glove", 10)
+                collectAndSell("Ribcage Of The Saint's Corpse", 10)
+                collectAndSell("Ancient Scroll", 10)
+            end
+            storyDialogue()
+            autoStory()
+
+        elseif questName.Name == "Defeat Fugo And His Purple Haze" then
+            print("FUGO")
+            SendWebhook("Killing `Fugo`")
+            killNPC("Fugo", 15)
+            storyDialogue()
+            autoStory()
+
+        elseif questName.Name == "Defeat Pesci" then
+            print("PESCIy")
+            SendWebhook("Killing `Pesci`")
+            killNPC("Pesci", 15)
+            autoStory()
+
+        elseif questName.Name == "Defeat Ghiaccio" then
+            print("GHIACCIO")
+            SendWebhook("Killing `Ghiaccio`")
+            killNPC("Ghiaccio", 15)
+            storyDialogue()
+            autoStory()
+
+        elseif questName.Name == "Defeat Diavolo" then
+            SendWebhook("Killing `Diavolo`")
+            killNPC("Diavolo", 15)
+            endDialogue("Storyline #14", "Dialogue7", "Option1")
+            if Character:WaitForChild("Requiem Arrow", 5) then
+                LocalPlayer.Character.Humanoid.Health = 0
+                Teleport()
+            else
+                autoStory()
+            end
+        elseif LocalPlayer.PlayerStats.Spec.Value == "None" and LocalPlayer.PlayerStats.Level.Value >= 25 then
+            local function collectAndSell(toolName, amount)
+                farmItem(toolName, amount)
+                LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild(toolName))
+                endDialogue("Merchant", "Dialogue5", "Option2")
+            end
+
+            --people dont have headband oh no
+            if not LocalPlayer.Backpack:FindFirstChild("Zepellin's Headband") then
+                SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
+                task.wait(5)
+                farmItem("Zeppeli's Hat", 1)
+            end
+
+            --people are broke oh no
+            if LocalPlayer.PlayerStats.Money.Value <= 10000 then
+                print("WHERE DID THE MONEY GO FOR HAMON?")
+                SendWebhook("Collecting `$10000` for `Hamon`")
+
+                collectAndSell("Rokakaka", 25)
+                collectAndSell("Steel Ball", 10)
+                collectAndSell("Quinton's Glove", 10)
+                collectAndSell("Pure Rokakaka", 10)
+                collectAndSell("Ribcage Of The Saint's Corpse", 10)
+                collectAndSell("Ancient Scroll", 10)
+                collectAndSell("Clackers", 10)
+                collectAndSell("Caesar's headband", 10)
+            end
+
+            --finally, get it!
+            if LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
+                SendWebhook("Buying `Hamon`")
+             LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
+             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
+             repeat
               game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
                  task.wait(0.05)
-            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
-            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
-            repeat
-            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
-            task.wait(0.05)
-            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
-            end
-            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
-            repeat
-            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-            task.wait(0.05)
-            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
-            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
+             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
+             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
+             repeat
+             game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
+             task.wait(0.05)
+             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
+             end
              firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
+             repeat
+             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+             task.wait(0.05)
+             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
+             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
+             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
+             end
+             repeat
+             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+             task.wait(0.05)
+             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
+             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
+             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
+             end
+             task.wait(10)
+                autoStory()
+            else
+                Teleport()
             end
-            repeat
-            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-            task.wait(0.05)
-            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
-            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
-            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
-            end
-            task.wait(10)
-            autoStory()
-        else
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30) 
-            Teleport()
+        elseif LocalPlayer.PlayerStats.Level.Value == 50 then
+            SendWebhook(
+                "**Prestige 3, Level 50 reached!**" ..
+                "\nTime: `" .. (Data["Time"])/60 .. " minutes or " .. (Data["Time"])/3600 .. " hours`" ..
+                "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
+                "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
+                "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
+                "\nAccount: `" .. LocalPlayer.Name .. "`"
+            )
+            pcall(function()
+                delfile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt")
+            end)
         end
-    end
-        
-    while #questPanel:GetChildren() < 2 and repeatCount < 1000 do
-        if not questPanel:FindFirstChild("Take down 3 vampires") then
-            SendWebhook("Account: `" .. LocalPlayer.Name .. "`\nTook around: `".. (tick() - lastTick).. " seconds` to complete a quest")
-            lastTick = tick()
-            endDialogue("William Zeppeli", "Dialogue4", "Option1")
-        end
-    
-        LocalPlayer.QuestsRemoteFunction:InvokeServer({[1] = "ReturnData"})
-        storyDialogue()
-        task.wait(0.01)
-        repeatCount = repeatCount + 1
-    end
-    
-
-    if repeatCount >= 1000 then
-        Teleport()
-    end
-
-    if questPanel:FindFirstChild("Help Giorno by Defeating Security Guards") then
-        print('SECURITY GUARD')
-        SendWebhook("Killing Security Guard `" .. LocalPlayer.PlayerStats.QuestProgress.Value.."/"..LocalPlayer.PlayerStats.QuestMaxProgress.Value .."`")
-        if killNPC("Security Guard", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] and LocalPlayer.PlayerStats.Level.Value >= 3 and dontTPOnDeath then
-        print('NO STAND?')
-        task.wait(5)
-    
-        farmItem("Rokakaka", 25)
-        farmItem("Mysterious Arrow", 25)
-        farmItem("Zeppeli's Hat", 10)
-
-        if countItems("Mysterious Arrow") >= 25 and countItems("Mysterious Arrow") >= 25 then
-            print("MAX ARROW AND ROKA, GOT")
-            print("ATTEMPTING TO STAND FARM")
-            dontTPOnDeath = false
-            attemptStandFarm()
-        else
-            Teleport()
-        end
-    
-    elseif questPanel:FindFirstChild("Defeat Leaky Eye Luca") and getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
-        print("LEAKY EYE LUCA")
-        SendWebhook("Killing `Leaky Eye Luca`")
-        if killNPC("Leaky Eye Luca", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Defeat Bucciarati") then
-        print("BUCCIARATI")
-        SendWebhook("Killing `Bucciarati`")
-
-        if killNPC("Bucciarati", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Collect $5,000 To Cover For Popo's Real Fortune") then
-        print("WAH WAH I DONT HAVE ENOUGH MONEY")
-        if LocalPlayer.PlayerStats.Money.Value < 5000 then
-            SendWebhook("Collecting `$5000`")
-            local function collectAndSell(toolName, amount)
-                if countItems(toolName) <= amount then
-                    farmItem(toolName, amount)
-                    Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild(toolName))
-                    endDialogue("Merchant", "Dialogue5", "Option2")
-                    storyDialogue()
-                    autoStory()
-                end
-
-                if LocalPlayer.PlayerStats.Money.Value < 5000 then
-                    storyDialogue()
-                    autoStory()
-                end
-            end
-            task.wait(10)
-            
-            collectAndSell("Mysterious Arrow", 25)
-            collectAndSell("Rokakaka", 25)
-            collectAndSell("Diamond", 10)
-            collectAndSell("Steel Ball", 10)
-            collectAndSell("Quinton's Glove", 10)
-            collectAndSell("Ribcage Of The Saint's Corpse", 10)
-            
-        end
-        autoStory()
-
-    elseif questPanel:FindFirstChild("Defeat Fugo And His Purple Haze") then
-        print("FUGO")
-        SendWebhook("Killing `Fugo`")
-        if killNPC("Fugo", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Defeat Pesci") then
-        print("PESCI")
-        SendWebhook("Killing `Pesci`")
-        if killNPC("Pesci", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Defeat Ghiaccio") then
-        print("GHIACCIO")
-        SendWebhook("Killing `Ghiaccio`")
-        if killNPC("Ghiaccio", 15) then
-            task.wait(1)
-            storyDialogue()
-            autoStory()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Defeat Diavolo") then
-        SendWebhook("Killing `Diavolo`")
-        killNPC("Diavolo", 15)
-        endDialogue("Storyline #14", "Dialogue7", "Option1")
-        if Character:WaitForChild("Requiem Arrow", 5) then
-            LocalPlayer.Character.Humanoid.Health = 0
-            Teleport()
-        else
-            autoStory()
-        end
-
-    elseif questPanel:FindFirstChild("Take down 3 vampires") and LocalPlayer.PlayerStats.Spec.Value ~= "None" then
-        getgenv().HamonCharge = 10
-        local function vampire()
-            LocalPlayer.Character.PrimaryPart.CFrame = workspace.Living:FindFirstChild("Vampire").HumanoidRootPart.CFrame - Vector3.new(0, 15, 0)
-            if not questPanel:FindFirstChild("Take down 3 vampires") then
-                if (tick() - lastTick) >= 5 then
-                    SendWebhook("Account: `" .. LocalPlayer.Name .. "`\nTook around: `".. (tick() - lastTick).. " seconds` to complete `Vampire Quest`")
-                    lastTick = tick()
-                end
-                endDialogue("William Zeppeli", "Dialogue4", "Option1")
-            end
-        end
-
-        killNPC("Vampire", 15, false, vampire)
-        autoStory()
-
-    elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-        SendWebhook(
-            "**Prestige 3, Level 50 reached!**" ..
-            "\nTime: `" .. (tick() - Data["Time"])/60 .. " minutes or " .. (tick() - Data["Time"])/3600 .. " hours`" ..
-            "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
-            "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
-            "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
-            "\nAccount: `" .. LocalPlayer.Name .. "`"
-        )
-        pcall(function()
-            delfile("AutoPres3_"..LocalPlayer.Name..".txt")
-        end)
     end
 end
 
@@ -815,15 +832,11 @@ end)
 
 LocalPlayer.CharacterAdded:Connect(function()
     task.wait(1)
-    for _, child in pairs(LocalPlayer.Character:GetDescendants()) do
-        if child:IsA("BasePart") and child.CanCollide == true then
-            child.CanCollide = false
-        end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+    	if v:IsA("BasePart") then
+        	v.CanCollide = false
+    	end
     end
-end)
-
-hookfunction(workspace.Raycast, function() -- noclip bypass
-    return
 end)
 
 autoStory()
