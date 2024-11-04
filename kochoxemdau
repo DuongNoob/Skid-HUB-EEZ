@@ -152,8 +152,6 @@ local function SendWebhook(msg)
     request(abcdef)
 end
 
-SendWebhook("Loading Xenon V3 - Auto Prestige 3\nCurrent level: `"..LocalPlayer.PlayerStats.Level.Value.."`\nCurrent prestige: `"..LocalPlayer.PlayerStats.Prestige.Value.."`\nTime since start: `" .. (Data["Time"])/60 .. " minutes`")
-
 hookfunction(workspace.Raycast, function() -- noclip bypass
     return
 end)
