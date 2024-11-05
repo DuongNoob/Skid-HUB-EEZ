@@ -527,7 +527,6 @@ local function allocateSkills() --this should allocate the destructive shit stuf
         
         if LocalPlayer.PlayerStats.Spec.Value == "Hamon (William Zeppeli)" then
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Punch V",["SkillTreeType"] = "Spec"})
-			RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Breathing",["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Lung Capacity V", ["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Breathing Technique V",["SkillTreeType"] = "Spec"})
         end
