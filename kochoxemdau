@@ -9,7 +9,7 @@ getgenv().standList =  {
 getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked a lot
 getgenv().sortOrder = "Asc" --desc for less players, asc for more
 getgenv().lessPing = false --turn this on if u want lower ping servers, cant guarantee you will see same people using script, and data error 1
-getgenv().autoRequiem = false --turn this on for auto requiem
+getgenv().autoRequiem = true --turn this on for auto requiem
 getgenv().NPCTimeOut = 15 --timeout for npc not spawning
 getgenv().HamonCharge = 90 --change if u want to charge hamon after every kill (around 90)
 getgenv().webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2" --change this if u want to use ur own webhook
@@ -260,13 +260,10 @@ local function useItem(aItem, amount)
         LocalPlayer.Character:WaitForChild("RemoteFunction"):InvokeServer("LearnSkill",{["Skill"] = "Worthiness ".. amount,["SkillTreeType"] = "Character"})
         repeat item:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
 		repeat task.wait() until LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.DialogueFrame.Frame.Line001.Container.Group001.Text == "You"
 		firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
     end
 end
 
@@ -282,8 +279,6 @@ local function attemptStandFarm()
         if not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
             useItem("Rokakaka", "II")
-        task.wait(0.05)
-        game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             SendWebhook("Got `".. LocalPlayer.PlayerStats.Stand.Value .. "` stand")
             dontTPOnDeath = true
@@ -450,7 +445,6 @@ local function killNPC(npcName, playerDistance, dontDestroyOnKill, extraParamete
         if Character.Hamon.Value <= getgenv().HamonCharge then
             RemoteFunction:InvokeServer("AssignSkillKey", {["Type"] = "Spec",["Key"] = "Enum.KeyCode.L",["Skill"] = "Hamon Breathing"})
             Character.RemoteEvent:FireServer("InputBegan", {["Input"] = Enum.KeyCode.L})
-            
         end
     end
 
@@ -533,6 +527,7 @@ local function allocateSkills() --this should allocate the destructive shit stuf
         
         if LocalPlayer.PlayerStats.Spec.Value == "Hamon (William Zeppeli)" then
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Punch V",["SkillTreeType"] = "Spec"})
+			RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Hamon Breathing",["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Lung Capacity V", ["SkillTreeType"] = "Spec"})
             RemoteFunction:InvokeServer("LearnSkill", {["Skill"] = "Breathing Technique V",["SkillTreeType"] = "Spec"})
         end
@@ -543,6 +538,14 @@ local function autoStory()
     local questPanel = LocalPlayer.PlayerGui.HUD.Main.Frames.Quest.Quests
     local repeatCount = 0
     allocateSkills()
+
+    if LocalPlayer.PlayerStats.Level.Value >= 25 and LocalPlayer.PlayerStats.Prestige.Value >= 1 and LocalPlayer.Backpack:FindFirstChild("Requiem Arrow") and (LocalPlayer.PlayerStats.Stand.Value == "King Crimson" or LocalPlayer.PlayerStats.Stand.Value == "Star Platinum") then
+        LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2010, 500)
+        local oldStand = LocalPlayer.PlayerStats.Stand.Value
+        useItem("Requiem Arrow", "V")
+        repeat task.wait() until LocalPlayer.PlayerStats.Stand.Value ~= oldStand
+        autoStory()
+    end
     
 
     if LocalPlayer.PlayerStats.Spec.Value == "None" and LocalPlayer.PlayerStats.Level.Value >= 25 then
@@ -553,24 +556,29 @@ local function autoStory()
         end
         
         if not LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
-            SendWebhook("Farming `Zeppeli's Hat` to purchase `Hamon`")
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30)
+            SendWebhook("Farming `Caesar's Headband` to purchase `Hamon`")
+            task.wait(60)
+            farmItem("Zeppeli's Hat", 1)
         end
 
         if LocalPlayer.PlayerStats.Money.Value <= 10000 then
             print("WHERE DID THE MONEY GO FOR HAMON?")
             SendWebhook("Collecting `$10000` for `Hamon`")
             collectAndSell("Mysterious Arrow", 25)
-            collectAndSell("Rokakaka", 25)
+			collectAndSell("Rokakaka", 25)
+			collectAndSell("Diamond", 10)
             collectAndSell("Steel Ball", 10)
             collectAndSell("Quinton's Glove", 10)
             collectAndSell("Pure Rokakaka", 10)
             collectAndSell("Ribcage Of The Saint's Corpse", 10)
+            collectAndSell("Ancient Scroll", 10)
+            collectAndSell("Clackers", 10)
+            collectAndSell("Caesar's headband", 10)
         end
 
         if LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat") then
             SendWebhook("Buying `Hamon`")
-            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
+             LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
             repeat
               game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
@@ -600,7 +608,6 @@ local function autoStory()
             task.wait(10)
             autoStory()
         else
-            loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/refs/heads/main/SkidHub_Xd_Part2.lua"))()            task.wait(30) 
             Teleport()
         end
     end
@@ -640,7 +647,7 @@ local function autoStory()
     
         farmItem("Rokakaka", 25)
         farmItem("Mysterious Arrow", 25)
-        farmItem("Zeppeli's Hat", 10)
+		farmItem("Zeppeli's Hat", 1)
 
         if countItems("Mysterious Arrow") >= 25 and countItems("Mysterious Arrow") >= 25 then
             print("MAX ARROW AND ROKA, GOT")
@@ -693,14 +700,16 @@ local function autoStory()
                 end
             end
             task.wait(10)
-            
             collectAndSell("Mysterious Arrow", 25)
-            collectAndSell("Rokakaka", 25)
-            collectAndSell("Diamond", 10)
+			collectAndSell("Rokakaka", 25)
+			collectAndSell("Diamond", 10)
             collectAndSell("Steel Ball", 10)
             collectAndSell("Quinton's Glove", 10)
+            collectAndSell("Pure Rokakaka", 10)
             collectAndSell("Ribcage Of The Saint's Corpse", 10)
-            
+            collectAndSell("Ancient Scroll", 10)
+            collectAndSell("Clackers", 10)
+            collectAndSell("Caesar's headband", 10)
         end
         autoStory()
 
@@ -747,6 +756,23 @@ local function autoStory()
         else
             autoStory()
         end
+    elseif LocalPlayer.PlayerStats.Level.Value == 50 then
+        if Character:FindFirstChild("FocusCam") then
+            Character.FocusCam:Destroy()
+			SendWebhook(
+            "**Prestige 3, Level 50 reached!**" ..
+            "\nTime: `" .. (tick() - Data["Time"])/60 .. " minutes or " .. (tick() - Data["Time"])/3600 .. " hours`" ..
+            "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
+            "\nStand: `" .. LocalPlayer.PlayerStats.Stand.Value .. "`" ..
+            "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
+            "\nAccount: `" .. LocalPlayer.Name .. "`"
+        )
+           pcall(function()
+               delfile("AutoPres3_"..LocalPlayer.Name..".txt")
+            end)
+		end
+
+
 
     elseif questPanel:FindFirstChild("Take down 3 vampires") and LocalPlayer.PlayerStats.Spec.Value ~= "None" then
         getgenv().HamonCharge = 10
@@ -764,8 +790,10 @@ local function autoStory()
         killNPC("Vampire", 15, false, vampire)
         autoStory()
 
-    elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-        SendWebhook(
+        elseif LocalPlayer.PlayerStats.Level.Value == 50 then
+        if Character:FindFirstChild("FocusCam") then
+            Character.FocusCam:Destroy()
+			SendWebhook(
             "**Prestige 3, Level 50 reached!**" ..
             "\nTime: `" .. (tick() - Data["Time"])/60 .. " minutes or " .. (tick() - Data["Time"])/3600 .. " hours`" ..
             "\nFrom: `Prestige: ".. Data["Prestige"]  .. ", Level " .. Data["Level"] .. "`" ..
@@ -773,9 +801,10 @@ local function autoStory()
             "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
             "\nAccount: `" .. LocalPlayer.Name .. "`"
         )
-        pcall(function()
-            delfile("AutoPres3NEWCF_"..LocalPlayer.Name..".txt")
-        end)
+           pcall(function()
+               delfile("AutoPres3_"..LocalPlayer.Name..".txt")
+            end)
+		end
     end
 end
 
@@ -785,7 +814,7 @@ task.spawn(function()
             print("Prestiged")
             Teleport()
         elseif LocalPlayer.PlayerStats.Level.Value == 50 then
-            if not Character:FindFirstChild("FocusCam") then
+		    if not Character:FindFirstChild("FocusCam") then
                 Character.FocusCam:Destroy()
                 break
             end
