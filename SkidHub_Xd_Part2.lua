@@ -7,19 +7,19 @@ getgenv().wantedPity = 0
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
     ["Yellow Candy"] = {
-        Max = 10,
+        Max = 50,
         Sell = false,
     },	
     ["Green Candy"] = {
-        Max = 10,
+        Max = 50,
         Sell = false,
     },	
     ["Blue Candy"] = {
-        Max = 10,
+        Max = 50,
         Sell = false,
     },	
     ["Red Candy"] = {
-        Max = 10,
+        Max = 50,
         Sell = false,
     },
 	["Lucky Arrow"] = {
