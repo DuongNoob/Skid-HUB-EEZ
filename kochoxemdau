@@ -766,6 +766,7 @@ local function autoStory()
             "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
             "\nAccount: `" .. LocalPlayer.Name .. "`"
         )
+           Teleport()
            pcall(function()
                delfile("AutoPres3_"..LocalPlayer.Name..".txt")
             end)
@@ -815,6 +816,7 @@ task.spawn(function()
         elseif LocalPlayer.PlayerStats.Level.Value == 50 then
 		    if not Character:FindFirstChild("FocusCam") then
                 Character.FocusCam:Destroy()
+                Teleport()
                 break
             end
         else
