@@ -766,11 +766,13 @@ local function autoStory()
             "\nSpec: `" .. LocalPlayer.PlayerStats.Spec.Value .. "`" ..
             "\nAccount: `" .. LocalPlayer.Name .. "`"
         )
-           Teleport()
            pcall(function()
                delfile("AutoPres3_"..LocalPlayer.Name..".txt")
             end)
-		end
+               task.wait(3)
+            LocalPlayer.Character.Humanoid.Health = 0
+            Teleport()
+	end
 
 
 
@@ -804,7 +806,7 @@ local function autoStory()
            pcall(function()
                delfile("AutoPres3_"..LocalPlayer.Name..".txt")
             end)
-		end
+	end
     end
 end
 
