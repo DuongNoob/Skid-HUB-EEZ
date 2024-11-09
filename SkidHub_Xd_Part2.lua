@@ -43,19 +43,19 @@ getgenv().ItemsToFarm = {
         Sell = true,
     },
     ["Yellow Candy"] = {
-        Max = 50,
+        Max = 45,
         Sell = false,
     },	
     ["Green Candy"] = {
-        Max = 50,
+        Max = 45,
         Sell = false,
     },	
     ["Blue Candy"] = {
-        Max = 50,
+        Max = 45,
         Sell = false,
     },	
     ["Red Candy"] = {
-        Max = 50,
+        Max = 45,
         Sell = false,
     },
 	["Lucky Arrow"] = {
