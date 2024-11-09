@@ -477,7 +477,7 @@ hookfunction(workspace.Raycast, function() -- noclip bypass
     return
 end)
 
-local itemsMessage = ""
+local itemsMessage = ""	
 
 for itemName, itemData in pairs(getgenv().ItemsToFarm) do
     local maxAmount = itemData.Max
@@ -489,11 +489,12 @@ for itemName, itemData in pairs(getgenv().ItemsToFarm) do
         farmItem(itemName, maxAmount)
     end
 
-    itemsMessage = itemsMessage .. countItems(itemName) .. " " .. itemName .. "\n"..  "Was it sold? " .. (shouldSell and "Yeah" or "Nope") .. "\n"
+    itemsMessage = itemsMessage .. countItems(itemName) .. " " .. itemName .. "\n"
 end
 
 LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(500, 2005, 500)
 itemsMessage = itemsMessage .. "Current pity: ".. CalculateSkinPity() .. "%\n"
+itemsMessage = itemsMessage .. "Money : ".. game.Players.LocalPlayer.PlayerStats.Money.Value .. "\n"
 SendWebhook(itemsMessage)
 if getgenv().wantedPity == 0 then
 wait(5)
