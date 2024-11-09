@@ -1,5 +1,6 @@
 getgenv().standList =  {
     ["The World"] = true,
+    ["Whitesnake"] = true,
 }
 
 getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked a lot
