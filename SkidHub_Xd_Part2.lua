@@ -6,6 +6,10 @@ getgenv().TaskWaitUntilHop = 5
 getgenv().wantedPity = 0
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
+     ["Gold Coin"] = {
+        Max = 30,
+        Sell = true,
+    },	   
     ["Diamond"] = {
         Max = 30,
         Sell = true,
@@ -73,7 +77,7 @@ getgenv().ItemsToFarm = {
     },
         ["Mysterious Arrow"] = {
         Max = 25,
-        Sell = false,
+        Sell = true,
     },
         ["Rokakaka"] = {
         Max = 25,
