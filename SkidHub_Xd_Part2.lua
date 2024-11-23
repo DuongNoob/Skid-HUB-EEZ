@@ -8,7 +8,7 @@ getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
      ["Gold Coin"] = {
         Max = 30,
-        Sell = true,
+        Sell = false,
     },	   
     ["Diamond"] = {
         Max = 30,
