@@ -604,7 +604,7 @@ local function autoStory()
             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
             end
-            task.wait(10)
+            task.wait(15)
             autoStory()
         else
             Teleport()
