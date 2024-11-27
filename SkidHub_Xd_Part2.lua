@@ -77,7 +77,7 @@ getgenv().ItemsToFarm = {
     },
         ["Mysterious Arrow"] = {
         Max = 25,
-        Sell = true,
+        Sell = false,
     },
         ["Rokakaka"] = {
         Max = 25,
