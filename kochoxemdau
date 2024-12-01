@@ -260,14 +260,10 @@ local function useItem(aItem, amount)
         LocalPlayer.Character:WaitForChild("RemoteFunction"):InvokeServer("LearnSkill",{["Skill"] = "Worthiness ".. amount,["SkillTreeType"] = "Character"})
         repeat item:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
-        firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        elseif game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
 	repeat task.wait() until LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.DialogueFrame.Frame.Line001.Container.Group001.Text == "You"
 	firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        end
     end
 end
 
@@ -282,7 +278,14 @@ local function attemptStandFarm()
 
         if not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
-            useItem("Rokakaka", "II")
+            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Rokakaka"))
+            LocalPlayer.Character:FindFirstChild("Rokakaka", 5):Activate()
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            wait(1)
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
+            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
+            end
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             SendWebhook("Got `".. LocalPlayer.PlayerStats.Stand.Value .. "` stand")
             dontTPOnDeath = true
@@ -291,7 +294,14 @@ local function attemptStandFarm()
 
     elseif not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
         print("DEBUG CHECK, USING ROKAKAKA TO CLEAR STAND")
-        useItem("Rokakaka", "II")
+         LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Rokakaka"))
+            LocalPlayer.Character:FindFirstChild("Rokakaka", 5):Activate()
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            wait(1)
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
+            firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
+            end
     end
 end
 
