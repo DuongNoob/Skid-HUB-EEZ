@@ -281,7 +281,6 @@ local function attemptStandFarm()
         if not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
             useItem("Rokakaka", "II")
-            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             SendWebhook("Got `".. LocalPlayer.PlayerStats.Stand.Value .. "` stand")
             dontTPOnDeath = true
@@ -291,7 +290,6 @@ local function attemptStandFarm()
     elseif not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
         print("DEBUG CHECK, USING ROKAKAKA TO CLEAR STAND")
         useItem("Rokakaka", "II")
-        firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
     end
 end
 
@@ -584,12 +582,12 @@ local function autoStory()
              LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
             repeat
-              game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
+                firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
                  task.wait(0.05)
             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
             repeat
-            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
+                firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
             task.wait(0.05)
             until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
             end
