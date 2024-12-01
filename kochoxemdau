@@ -581,27 +581,28 @@ local function autoStory()
             SendWebhook("Buying `Hamon`")
              LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Zeppeli's Hat"))
             game.Players.LocalPlayer.Character.RemoteEvent:FireServer("PromptTriggered", game.ReplicatedStorage.NewDialogue:FindFirstChild("Lisa Lisa"))
-                firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                            task.wait(0.05)
+            repeat
+              game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
+                 task.wait(0.05)
+            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
-                firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            repeat
+            game:GetService("VirtualInputManager"):SendMouseButtonEvent(0,8,0, true, nil, 1)
             task.wait(0.05)
+            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
             end
-            if  game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
-            task.wait(0.05)
-            end
-            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
+            repeat
             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
             task.wait(0.05)
-            end
+            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
              firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
             end
-            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui") then
+            repeat
             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
             task.wait(0.05)
-            end
+            until game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1")
             if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options:FindFirstChild("Option1") then
             firesignal(game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame.Options.Option1.TextButton.MouseButton1Click)
             end
