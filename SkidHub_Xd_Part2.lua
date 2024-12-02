@@ -1,4 +1,4 @@
-getgenv().fpsBoost = false
+getgenv().fpsBoost = true
 getgenv().waitCollect = 0.5
 getgenv().webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
 getgenv().ServerHop = 16
@@ -276,10 +276,30 @@ local function FireButton(x)
     end
 end
 if getgenv().fpsBoost then
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleSettings)
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.Frames.Settings.ToggleLowGFX.Button)
-FireButton(game:GetService("Players").LocalPlayer.PlayerGui.HUD.Main.ToggleHUD)
+  for i,v in game.ReplicatedStorage.Effects:GetDescendants() do
+            if v:IsA("ParticleEmitter") then
+                v:Destroy()
+            end
+        end
+       for i,v in next, workspace:GetDescendants() do
+    pcall(function()
+        v.Transparency = 1
+    end)
+end
+for i,v in next, getnilinstances() do
+    pcall(function()
+        v.Transparency = 1
+        for i1,v1 in next, v:GetDescendants() do
+            v1.Transparency = 1
+        end
+    end)
+end
+a = workspace
+a.DescendantAdded:Connect(function(v)
+    pcall(function()
+        v.Transparency = 1
+    end)
+end) 
 end
 hookfunction(workspace.Raycast, function()
     return
