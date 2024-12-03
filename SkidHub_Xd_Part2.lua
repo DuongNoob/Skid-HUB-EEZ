@@ -281,6 +281,10 @@ if getgenv().fpsBoost then
                 v:Destroy()
             end
         end
+	UserSettings():GetService('UserGameSettings').MasterVolume = 0;
+        settings().Rendering.QualityLevel = 1;
+        game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.Chat,false)
+        game:GetService("StarterGui"):SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList,false)
 end
 hookfunction(workspace.Raycast, function()
     return
