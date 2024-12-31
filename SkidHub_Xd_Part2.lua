@@ -399,7 +399,9 @@ local function farmItem(item, amount, autoSell)
     local iteminstance = workspace.Item_Spawns.Items:WaitForChild(item, 5)
 
     if workspace.Item_Spawns.Items:WaitForChild(item, 5) then
+        if checkIfFull(item, amount) then
             return true
+        end
 
         if iteminstance then
             getitem(iteminstance)
@@ -522,7 +524,6 @@ while serverToHop == "notyet" do task.wait(1) end
 if CalculateSkinPity() < getgenv().wantedPity then
     useRib()
 end
-
 
 
 
