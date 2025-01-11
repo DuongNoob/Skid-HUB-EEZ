@@ -3,7 +3,7 @@ getgenv().waitCollect = 0.5
 getgenv().webhook = "https://discord.com/api/webhooks/969887531539791933/xq5NhoABFqw1y2um1CdCB1a2O9qrYMU-A8RyNe3pkpDFiFPEotoFn_lo7KwuTpBB2zS2"
 getgenv().ServerHop = 16
 getgenv().TaskWaitUntilHop = 5
-getgenv().wantedPity = 0
+getgenv().wantedPity = 3.2
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
      ["Gold Coin"] = {
