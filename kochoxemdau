@@ -35,7 +35,7 @@ local HRP = Character.PrimaryPart
 local part
 local dontTPOnDeath = true
 
-if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://gist.githubusercontent.com/kequask/04595da9cb8b55ac9d91448e30671ff8/raw/ac70f4b180bed7ab111cdf6b989c9c0abe1629e9/chlenus.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
+if LocalPlayer.PlayerStats.Level.Value == 50 then loadstring(game:HttpGet("https://raw.githubusercontent.com/DuongNoob/Skid-HUB-EEZ/main/SkidHub_Xd_Part2.lua"))() while true do print("Level 50, Auto pres disabled") task.wait(9999999)  end end
 
 if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
     print("I FOUND IT")
@@ -255,23 +255,23 @@ local function useItem(aItem, amount)
     if not item then
         Teleport()
     end
-        task.wait(0.2)
+    task.wait(0.2)
+
     if amount then
         LocalPlayer.Character.Humanoid:EquipTool(item)
         LocalPlayer.Character:WaitForChild("RemoteFunction"):InvokeServer("LearnSkill",{["Skill"] = "Worthiness ".. amount,["SkillTreeType"] = "Character"})
         repeat item:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
-        firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
         task.wait(0.2)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-                task.wait(0.2)
+        task.wait(0.2)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
-          task.wait(0.2)
+        task.wait(0.2)
         firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
         task.wait(0.2)
 	repeat task.wait() until LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.DialogueFrame.Frame.Line001.Container.Group001.Text == "You"
-        task.wait(0.2)
+    task.wait(0.2)
 	firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
-        task.wait(0.2)
+    task.wait(0.2)
     end
 end
 
