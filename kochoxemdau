@@ -47,12 +47,13 @@ print("I DID FOUND IT, MAYBE IT WILL WORK?")
 RemoteEvent:FireServer("PressedPlay")
 
 if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1") then
-wait(2)
+ wait(2)
+    if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1") then
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
+    end
 end
 
 if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
-wait(2)
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
 end
 
