@@ -1,4 +1,4 @@
-getgenv().fpsBoost = true
+getgenv().fpsBoost = false
 getgenv().waitCollect = 0.5
 getgenv().webhook = "https://discord.com/api/webhooks/1327807513021775932/M_n7hFlLax9S_l_GD0eerqmdmklTEicw9Y4_p-8-SQmnESTam6bJ_yE5s9JvGxTsiztE"
 getgenv().ServerHop = 16
@@ -248,7 +248,7 @@ pcall(function()
     LocalPlayer.Character.RemoteEvent:FireServer("PressedPlay")
 
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen1"):Destroy()
-    task.wait(0.5)
+    task.wait(1)
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
     
     workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
