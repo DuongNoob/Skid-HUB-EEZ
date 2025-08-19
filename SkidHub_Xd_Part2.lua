@@ -16,35 +16,35 @@ getgenv().ItemsToFarm = {
     },	   
     ["Stone Mask"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },	   	
     ["Quinton's Glove"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },	   	
     ["Steel Ball"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },	   
     ["Pure Rokakaka"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
     ["Caesar's headband"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
     ["Clackers"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
     ["Ancient Scroll"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
     ["Zeppeli's Hat"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
 	["Lucky Arrow"] = {
         Max = 10,
@@ -52,20 +52,20 @@ getgenv().ItemsToFarm = {
     },
 	["Dio's Diary"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
 
 	["Rib Cage of The Saint's Corpse"] = {
         Max = 10,
-        Sell = false,
+        Sell = true,
     },
         ["Mysterious Arrow"] = {
         Max = 25,
-        Sell = false,
+        Sell = true,
     },
         ["Rokakaka"] = {
         Max = 25,
-        Sell = false,
+        Sell = true,
     },
 };
 repeat task.wait() until game.Players.LocalPlayer
