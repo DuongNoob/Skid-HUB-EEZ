@@ -300,7 +300,16 @@ local function attemptStandFarm()
         -- Check if standList exists and contains the player's stand
         if not getgenv().standList or not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA")
-            useItem("Rokakaka", "II")
+            local Rokaka = LocalPlayer.Backpack:FindFirstChild("Rokakaka") 
+            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Rokakaka"))
+            repeat Rokaka:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
+            firesignal(LocalPlayer.PlayerGui.DialogueGui:WaitForChild("Frame").ClickContinue.MouseButton1Click)
+            wait(0.5)
+            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame:FindFirstChild("ClickContinue") then
+            firesignal(game.Players.LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            end
+            wait(0.2)
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
         elseif getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             dontTPOnDeath = true
             Teleport()
@@ -310,7 +319,16 @@ local function attemptStandFarm()
     elseif LocalPlayer.PlayerStats and LocalPlayer.PlayerStats.Stand and LocalPlayer.PlayerStats.Stand.Value ~= "None" then
         if not getgenv().standList or not getgenv().standList[LocalPlayer.PlayerStats.Stand.Value] then
             print("DEBUG CHECK, USING ROKAKAKA TO CLEAR STAND")
-            useItem("Rokakaka", "II")
+            local Rokaka = LocalPlayer.Backpack:FindFirstChild("Rokakaka") 
+            LocalPlayer.Character.Humanoid:EquipTool(LocalPlayer.Backpack:FindFirstChild("Rokakaka"))
+            repeat Rokaka:Activate() task.wait() until LocalPlayer.PlayerGui:FindFirstChild("DialogueGui")
+            firesignal(LocalPlayer.PlayerGui.DialogueGui:WaitForChild("Frame").ClickContinue.MouseButton1Click)
+            wait(0.5)
+            if game.Players.LocalPlayer.PlayerGui:FindFirstChild("DialogueGui").Frame:FindFirstChild("ClickContinue") then
+            firesignal(game.Players.LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.ClickContinue.MouseButton1Click)
+            end
+            wait(0.2)
+            firesignal(LocalPlayer.PlayerGui:WaitForChild("DialogueGui").Frame.Options:WaitForChild("Option1").TextButton.MouseButton1Click)
         end
     end
 end
