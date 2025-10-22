@@ -6,51 +6,8 @@ getgenv().TaskWaitUntilHop = 5
 getgenv().wantedPity = 3
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
-     ["Gold Coin"] = {
-        Max = 30,
-        Sell = false,
-    },	   
-    ["Diamond"] = {
-        Max = 30,
-        Sell = false,
-    },	   
-    ["Stone Mask"] = {
-        Max = 10,
-        Sell = false,
-    },	   	
-    ["Quinton's Glove"] = {
-        Max = 10,
-        Sell = false,
-    },	   	
-    ["Steel Ball"] = {
-        Max = 10,
-        Sell = false,
-    },	   
-    ["Pure Rokakaka"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Caesar's headband"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Clackers"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Ancient Scroll"] = {
-        Max = 10,
-        Sell = false,
-    },
-    ["Zeppeli's Hat"] = {
-        Max = 10,
-        Sell = false,
-    },
+
 	["Lucky Arrow"] = {
-        Max = 10,
-        Sell = false,
-    },
-	["Dio's Diary"] = {
         Max = 10,
         Sell = false,
     },
