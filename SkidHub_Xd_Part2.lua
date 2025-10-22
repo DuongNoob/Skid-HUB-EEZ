@@ -451,7 +451,7 @@ local function useRib()
         useRib()
     end
 
-    task.wait(2)
+    task.wait(5)
 
     game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
 end
@@ -497,7 +497,7 @@ end
 game:GetService("TeleportService").TeleportInitFailed:Connect(function()
     game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
 end)
-while serverToHop == "notyet" do task.wait(1) end
+while serverToHop == "notyet" do task.wait(2) end
 
 if CalculateSkinPity() < getgenv().wantedPity then
     useRib()
