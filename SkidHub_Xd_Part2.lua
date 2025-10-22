@@ -257,7 +257,7 @@ local function serverHop()
 
             if not Faster then
                 print("Rate Limited, give me a moment")
-                task.wait(10)
+                task.wait(5)
                 Got = true
                 serverHop()
             end
@@ -507,7 +507,7 @@ local function useRib()
         useRib()
     end
 
-    task.wait(5)
+    task.wait(2)
 
     game:GetService("TeleportService"):TeleportToPlaceInstance(2809202155, serverToHop, game.Players.LocalPlayer)
 end
