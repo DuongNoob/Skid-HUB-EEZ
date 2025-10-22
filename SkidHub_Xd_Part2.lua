@@ -201,7 +201,7 @@ local function serverHop()
 
             if not Faster then
                 print("Rate Limited, give me a moment")
-                task.wait(5)
+                task.wait(10)
                 Got = true
                 serverHop()
             end
