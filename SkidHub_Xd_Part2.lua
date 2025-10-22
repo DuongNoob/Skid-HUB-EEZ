@@ -423,7 +423,7 @@ local function useRib()
         local oldPity = LocalPlayer.PlayerStats.PityCount.Value
 
         LocalPlayer.Character.Humanoid:EquipTool(item)
-        LocalPlayer.Character.RemoteFunction:InvokeServer("LearnSkill",{["Skill"] = "Worthiness V",["SkillTreeType"] = "Character"})
+        LocalPlayer.Character:WaitForChild("RemoteFunction"):InvokeServer("LearnSkill",{["Skill"] = "Worthiness",["SkillTreeType"] = "Character"})
     
         LocalPlayer.Character.RemoteEvent:FireServer("EndDialogue", {
             ["NPC"] = "Rib Cage of The Saint's Corpse",
