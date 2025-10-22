@@ -25,10 +25,18 @@ getgenv().ItemsToFarm = {
         Sell = false,
     },
 };
-repeat task.wait() until game.Players.LocalPlayer
-repeat task.wait() until game.Players.LocalPlayer.Character
-repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("RemoteEvent")
+game:GetService("CoreGui").DescendantAdded:Connect(function(child)
+    if child.Name == "ErrorPrompt" then
+        local GrabError = child:FindFirstChild("ErrorMessage",true)
+        repeat task.wait() until GrabError.Text ~= "Label"
+        local Reason = GrabError.Text
+        if Reason:match("kick") or Reason:match("You") or Reason:match("conn") or Reason:match("rejoin") then
+            game:GetService("TeleportService"):Teleport(2809202155, game:GetService("Players").LocalPlayer)
+        end
+    end
+end)
 
+repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 
 
 local LocalPlayer = game.Players.LocalPlayer
