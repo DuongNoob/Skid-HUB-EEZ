@@ -2,7 +2,7 @@ getgenv().fpsBoost = false
 getgenv().waitCollect = 0.5
 getgenv().webhook = "https://discord.com/api/webhooks/1330038973564719254/bwTYa_Hce3P-H1gx06VTtcg2tvfDL6VtP_OZqUoil4QAWl0o_Jdn3tOqub5Ri3oWULb6"
 getgenv().ServerHop = 16
-getgenv().TaskWaitUntilHop = 5
+getgenv().TaskWaitUntilHop = 7
 getgenv().wantedPity = 3
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
