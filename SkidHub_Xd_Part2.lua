@@ -446,6 +446,7 @@ local function useRib()
             ["Option"] = "Option1",
             ["Dialogue"] = "Dialogue2"
         })
+		wait(0.25)
         repeat task.wait(0.1) countDown = countDown - 1 print(countDown) until LocalPlayer.PlayerStats.PityCount.Value ~= oldPity or LocalPlayer.PlayerStats.PityCount.Value == 1 or countDown <= 0
         useRib()
     end
