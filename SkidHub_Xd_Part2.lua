@@ -1,6 +1,6 @@
 getgenv().fpsBoost = false
 getgenv().waitCollect = 0.5
-getgenv().webhook = "https://discord.com/api/webhooks/1327807513021775932/M_n7hFlLax9S_l_GD0eerqmdmklTEicw9Y4_p-8-SQmnESTam6bJ_yE5s9JvGxTsiztE"
+getgenv().webhook = "https://discord.com/api/webhooks/1330038973564719254/bwTYa_Hce3P-H1gx06VTtcg2tvfDL6VtP_OZqUoil4QAWl0o_Jdn3tOqub5Ri3oWULb6"
 getgenv().ServerHop = 16
 getgenv().TaskWaitUntilHop = 5
 getgenv().wantedPity = 3
