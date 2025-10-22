@@ -204,6 +204,7 @@ if not LocalPlayer.PlayerGui:FindFirstChild("HUD") then
     local HUD = game:GetService("ReplicatedStorage").Objects.HUD:Clone()
     HUD.Parent = LocalPlayer.PlayerGui
 end
+
 print("I DID FOUND IT, MAYBE IT WILL WORK?")
 RemoteEvent:FireServer("PressedPlay")
 
@@ -217,18 +218,15 @@ end
 if LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen") then
     LocalPlayer.PlayerGui:FindFirstChild("LoadingScreen"):Destroy()
 end
-pcall(function()
-    for _,v in pairs(getconnections(LocalPlayer.Idled)) do
-        v:Disable()
+
+task.spawn(function()
+    if game.Lighting:WaitForChild("DepthOfField", 10) then
+        game.Lighting.DepthOfField:Destroy()
     end
-
-    print("Xenon On TOP! Made with love by dank, Xenon Invite Link:https://discord.gg/YrAa5ngDPv")
-
-
-    
-    workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
-    workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89, 2048)
 end)
+
+workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_6.Size = Vector3.new(2048, 89, 2048)
+workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89, 2048)
 local function FireButton(x)
     for i, v in pairs(getconnections(x.MouseButton1Click)) do 
         v:Fire() wait(0.5)
