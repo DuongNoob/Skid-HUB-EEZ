@@ -52,6 +52,24 @@ workspace.Map.IMPORTANT.OceanFloor.OceanFloor_Sand_4.Size = Vector3.new(2048, 89
 getgenv().standList =  {
     ["Silver Chariot"] = true
 }
+task.spawn(function()
+    local PlayerStats = LocalPlayer:WaitForChild("PlayerStats")
+    task.wait(2)
+
+    local currentStand = PlayerStats.Stand.Value
+
+    if getgenv().standList[currentStand] then
+        local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+        for _, v in pairs(PlayerStats:GetChildren()) do
+            if v.Value == "None" and v.Name:match("Slot") and not v.Name:match("Style") then
+                Character:WaitForChild("RemoteEvent"):FireServer("SwapStand", v.Name)
+                repeat task.wait(0.5)
+                until PlayerStats.Stand.Value == "None"
+                break
+            end
+        end
+    end
+end)
 
 getgenv().waitUntilCollect = 0.5 --Change this if ur getting kicked a lot
 getgenv().sortOrder = "Asc" --desc for less players, asc for more
