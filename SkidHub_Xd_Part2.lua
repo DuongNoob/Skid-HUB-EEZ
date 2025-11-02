@@ -7,75 +7,12 @@ getgenv().wantedPity = 3
 getgenv().fallBackDelay = 100 -- 100/10 = 10 seconds,
 getgenv().ItemsToFarm = {
 
-	     ["Diamond"] = {
-        Max = 30,
-        Sell = true,
-    },	   
-    ["Stone Mask"] = {
-        Max = 10,
-        Sell = true,
-    },	   	
-    ["Quinton's Glove"] = {
-        Max = 10,
-        Sell = true,
-    },	   	
-    ["Steel Ball"] = {
-        Max = 10,
-        Sell = true,
-    },	   
-    ["Pure Rokakaka"] = {
-        Max = 10,
-        Sell = true,
-    },
-    ["Caesar's headband"] = {
-        Max = 10,
-        Sell = true,
-    },
-    ["Clackers"] = {
-        Max = 10,
-        Sell = true,
-    },
-    ["Ancient Scroll"] = {
-        Max = 10,
-        Sell = true,
-    },
-    ["Zeppeli's Hat"] = {
-        Max = 10,
-        Sell = true,
-    },
-    ["Yellow Candy"] = {
-        Max = 45,
-        Sell = false,
-    },	
-    ["Green Candy"] = {
-        Max = 45,
-        Sell = false,
-    },	
-    ["Blue Candy"] = {
-        Max = 45,
-        Sell = false,
-    },	
-    ["Red Candy"] = {
-        Max = 45,
-        Sell = false,
-    },
-	["Lucky Arrow"] = {
-        Max = 10,
-        Sell = false,
-    },
-	["Dio's Diary"] = {
-        Max = 10,
-        Sell = true,
-    },
 
 	["Rib Cage of The Saint's Corpse"] = {
         Max = 10,
         Sell = false,
     },
-        ["Mysterious Arrow"] = {
-        Max = 25,
-        Sell = true,
-    },
+
         ["Rokakaka"] = {
         Max = 25,
         Sell = true,
